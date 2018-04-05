@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="mobile-agent" content="format=html5;url=http://h5.17k.com/">
+		<script type="text/javascript" src="src/Q.js"></script>
+		<link href="src/main.css" rel="stylesheet" type="text/css">
+		<title>小说网|免费小说下载,最新最好看的小说网</title>
+		<meta name="Keywords" content="小说，免费小说，原创小说，17k小说网，小说阅读网">
+		<meta name="Description" content="17k小说网，最好看的小说阅读网站，提供都市小说、玄幻小说、仙侠小说、历史小说、网游小说、免费小说等在线阅读以及免费下载。每日最快更新，页面简洁，访问速度快。">
+		<meta name="applicable-device" content="pc">
+
+		<!--身体-->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?244d94edc2722fc020ab09f2f1276a03";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<script src="./src1/hm.js"></script>
+		<link rel="stylesheet" href="./src1/style.css" type="text/css" media="all">
+		<script type="text/javascript" src="./src1/common.js"></script>
+		<script type="text/javascript" src="./src1/theme.js"></script>
+		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="layer/layer.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+
+	<body>
+	<#include "/header.html"/>
+		<div class="body">
+			<div class="main">
+
+				<div id="content" class="row">
+					<div class="main row">
+						<div class="col4">
+							<div class="blockc" style="height:420px;">
+								<div class="cf">
+									<div class="slidetitle">
+										<ul id="tab_slide">
+
+											<li>
+												<a href="javascript:void(0)" onmouseover="selecttab(this);clearInterval(int_tab_slide);" onmouseout="slide_tab_slide();" class=""><#list articleRecommend as article><#if (article_index==0)><img src="/bookimage/${article.id?c}.jpg"></#if></#list></a>
+											</li>
+
+											<li>
+												<a href="javascript:void(0)" onmouseover="selecttab(this);clearInterval(int_tab_slide);" onmouseout="slide_tab_slide();" class=""><#list articleAllVisit as article><#if (article_index==0)><img src="/bookimage/${article.id?c}.jpg"></#if></#list></a>
+											</li>
+
+											<li>
+												<a href="javascript:void(0)" onmouseover="selecttab(this);clearInterval(int_tab_slide);" onmouseout="slide_tab_slide();" class=""><#list articleAllVote as article><#if (article_index==0)><img src="/bookimage/${article.id?c}.jpg"></#if></#list></a>
+											</li>
+
+											<li>
+												<a href="javascript:void(0)" onmouseover="selecttab(this);clearInterval(int_tab_slide);" onmouseout="slide_tab_slide();" class=""><#list articleSize as article><#if (article_index==0)><img src="/bookimage/${article.id?c}.jpg"></#if></#list></a>
+											</li>
+
+											<li class="last">
+												<a href="javascript:void(0)" onmouseover="selecttab(this);clearInterval(int_tab_slide);" onmouseout="slide_tab_slide();" class="selected"><#list articlePostDate as article><#if (article_index==0)><img src="/bookimage/${article.id?c}.jpg"></#if></#list></a>
+											</li>
+
+										</ul>
+									</div>
+									<div class="slidecontent">
+										<#list articleRecommend as article>
+											<#if (article_index==0)>
+												<div style="display: none;">
+													<a href="/bookinfo?id=${article.id?c}" target="_blank">
+														<img src="/bookimage/${article.id?c}.jpg">
+														<span>${article.name}</span><br>
+														<p>${article.intro}..</p>
+													</a>
+												</div>
+											</#if>
+										</#list>
+										<#list articleAllVisit as article>
+											<#if (article_index==0)>
+												<div style="display: none;">
+													<a href="/bookinfo?id=${article.id?c}" target="_blank">
+														<img src="/bookimage/${article.id?c}.jpg">
+														<span>${article.name}</span><br>
+														<p>${article.intro}..
+														</p>
+													</a>
+												</div>
+											</#if>
+										</#list>
+
+
+										<#list articleAllVote as article>
+											<#if (article_index==0)>
+												<div style="display: none;">
+													<a href="/bookinfo?id=${article.id?c}" target="_blank">
+														<img src="/bookimage/${article.id?c}.jpg">
+														<span>${article.name}</span><br>
+														<p>${article.intro}..
+														</p>
+													</a>
+												</div>
+											</#if>
+
+										</#list>
+
+										<#list articleSize as article>
+											<#if (article_index==0)>
+												<div style="display: none;">
+													<a href="/bookinfo?id=${article.id?c}" target="_blank">
+														<img src="/bookimage/${article.id?c}.jpg">
+														<span>${article.name}</span><br>
+														<p>${article.intro}</p>
+													</a>
+												</div>
+											</#if>
+										</#list>
+
+										<#list articlePostDate as article>
+											<#if (article_index==0)>
+												<div style="display: block;">
+													<a href="/bookinfo?id=${article.id?c}" target="_blank">
+														<img src="/bookimage/${article.id?c}.jpg">
+														<span>${article.name}</span><br>
+														<p>${article.intro}..</p>
+													</a>
+												</div>
+											</#if>
+										</#list>
+
+
+									</div>
+									<script type="text/javascript">
+										var int_tab_slide;
+
+										function slide_tab_slide() {
+											int_tab_slide = setInterval(function() {
+												nexttab("tab_slide")
+											}, 5000);
+										}
+										addEvent(window, "load", slide_tab_slide);
+									</script>
+								</div>
+							</div>
+						</div>
+
+						<div class="col5">
+							<div class="block" style="height:204px;">
+								<div class="blocktitle">本站公告</div>
+								<div class="blockcontent">
+									<div style="width:400px;height:80px;margin:-5px 0 0 -2px;">
+										<a href="#" target="_blank"><img src="./src1/254365865aaa6f0cad.jpg" width="100%"></a>
+									</div>
+								</div>
+							</div>
+							<div class="blockc" style="height:204px;">
+								<div style="padding:10px;">
+									<ul class="ultitle">
+
+										<li><span class="fr">12-30</span>
+											<a href="#">本站只是学习之作，并不是要做盗版网站。</a>
+										</li>
+
+										<li><span class="fr">1-28</span>
+											<a href="#">是用来做我的毕业设计的</a>
+										</li>
+
+										<li><span class="fr">1-28</span>
+											<a href="#">该站使用java所做</a>
+										</li>
+
+										<li><span class="fr">1-28</span>
+											<a href="#">网页模板，皆取之主流小说站</a>
+										</li>
+
+										<li><span class="fr">1-28</span>
+											<a href="#">资源皆取之主流小说站</a>
+										</li>
+
+										<li><span class="fr">1-28</span>
+											<a href="#">如有冒犯，请速联系站长：1264830070</a>
+										</li>
+
+									</ul>
+									<div class="more">
+										<a href="/booktype">更多...</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col3 last">
+							<div class="block" style="height:420px;">
+								<div class="blocktitle">编辑推荐</div>
+								<div class="blockcontent">
+									<ul class="ulhover">
+										<#list articleRecommend as article>
+											<li onmouseover="selecttab(this)" class="selected">
+												<span><em>${article.author}</em> <#if (article_index+1<4)><b>${article_index+1}</b><#else><i>${article_index+1}</i></#if><a href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a></span>
+												<div class="cf">
+													<b>${article_index+1}</b>
+													<a href="/bookinfo?id=${article.id?c}" target="_blank"><img src="/bookimage/${article.id?c}.jpg" alt="${article.name}"></a>
+													<p>
+														<a class="hot" href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a><br> 作者：${article.author}
+														<br>分类：${article.type.typeName}
+													</p>
+												</div>
+											</li>
+										</#list>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="main">
+						<div style="width:100%;text-align:center;">
+							<a href="javascript:;" target="_blank"><img src="./src1/424490666574b9779a001e.jpg"></a>
+						</div>
+						<a href="http://www.aiduwenxue.com/wxlp/lxh.php" target="_blank">
+
+						</a>
+					</div>
+					<a href="http://www.aiduwenxue.com/wxlp/lxh.php" target="_blank">
+
+					</a>
+					<div class="main row">
+						<a href="http://www.aiduwenxue.com/wxlp/lxh.php" target="_blank">
+						</a>
+						<div class="col3">
+							<a href="http://www.aiduwenxue.com/wxlp/lxh.php" target="_blank">
+							</a>
+							<div class="block" style="height:560px;">
+								<a href="http://www.aiduwenxue.com/wxlp/lxh.php" target="_blank">
+								</a>
+								<div class="blocktitle">
+									<a href="http://www.aiduwenxue.com/wxlp/lxh.php" target="_blank">
+										<h2 class="fl">点击榜</h2>
+									</a>
+									<ul class="tabf fr">
+										<a href="http://www.aiduwenxue.com/wxlp/lxh.php" target="_blank">
+										</a>
+										<li>
+											<a href="http://www.aiduwenxue.com/wxlp/lxh.php" target="_blank"></a>
+											<a href="javascript:void(0)" onmouseover="selecttab(this);">周</a>
+										</li>
+										<li>
+											<a href="javascript:void(0)" onmouseover="selecttab(this);">月</a>
+										</li>
+										<li>
+											<a href="javascript:void(0)" onmouseover="selecttab(this);" class="selected">总</a>
+										</li>
+									</ul>
+								</div>
+								<div class="blockcontent">
+									<div style="display:none;">
+										<ul class="ullist">
+											<#list articleWeekVisit as article>
+												<li><span class="libright">${article.allVisit}</span><span class="libleft"><a href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a></span></li>
+											</#list>
+
+										</ul>
+										<a href="/booktype" class="more">更多...</a>
+									</div>
+									<div style="display:none;">
+										<ul class="ullist">
+
+											<#list articleMonthVisit as article>
+												<li><span class="libright">${article.monthVisit}</span><span class="libleft"><a href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a></span></li>
+											</#list>
+										</ul>
+										<a href="/booktype" class="more">更多...</a>
+									</div>
+									<div>
+										<ul class="ullist">
+											<#list articleAllVisit as article>
+												<li><span class="libright">${article.weekVisit}</span><span class="libleft"><a href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a></span></li>
+											</#list>
+
+										</ul>
+										<a href="/booktype" class="more">更多...</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col6">
+							<div class="blockc" style="height:560px;">
+								<#list articleFourType as articleList>
+									<div class="bh" style="height:256px;overflow:hidden;">
+										<div class="bt">
+											<!--<span class="fr"><a class="gray" href="/modules/article/toplist.php?order=allvisit&sortid=9&page=1">更多..</a></span>--><strong><#list articleList as article><#if article_index==0>${article.type.typeName}</#if></#list></strong></div>
+										<div class="bc">
+											<#list articleList as article>
+												<#if article_index==0>
+													<a href="/bookinfo?id=${article.id?c}" target="_blank"><img src="/bookimage/${article.id?c}.jpg"></a>
+													<strong><a href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a></strong>
+													<p> ${article.intro?substring(0,33)}……
+														<a class="hot" href="/bookinfo?id=${article.id?c}" target="_blank">[阅读]</a>
+													</p>
+													<div class="cb"></div>
+												</#if>
+											</#list>
+											<ul>
+											<#list articleList as article>
+												<#if (article_index>0)>
+													
+													<li><span class="gray">▌</span>
+														<a href="/bookinfo?id=${article.id?c}">${article.name}</a>
+													</li>
+
+													
+												</#if>
+											</ul>
+											</#list>
+
+										</div>
+									</div>
+								</#list>
+							</div>
+						</div>
+
+						<div class="col3 last">
+							<div class="block" style="height:560px;">
+								<div class="blocktitle">
+									<h2 class="fl">推荐榜</h2>
+									<ul class="tabf fr">
+										<li>
+											<a href="javascript:void(0)" onmouseover="selecttab(this)">周</a>
+										</li>
+										<li>
+											<a href="javascript:void(0)" onmouseover="selecttab(this)">月</a>
+										</li>
+										<li>
+											<a href="javascript:void(0)" onmouseover="selecttab(this)" class="selected">总</a>
+										</li>
+									</ul>
+								</div>
+								<div class="blockcontent">
+									<div style="display:none;">
+										<ul class="ullist">
+											<#list articleWeekVote as article>
+												<li><span class="libright">${article.weekVote}</span><span class="libleft"><a href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a></span></li>
+											</#list>
+
+											
+
+										</ul>
+										<a href="/booktype" class="more">更多...</a>
+									</div>
+									<div style="display:none;">
+										<ul class="ullist">
+											<#list articleMonthVote as article>
+												<li><span class="libright">${article.monthVote}</span><span class="libleft"><a href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a></span></li>
+											</#list>
+
+											
+
+										</ul>
+										<a href="/booktype" class="more">更多...</a>
+									</div>
+									<div >
+										<ul class="ullist">
+											<#list articleAllVote as article>
+												<li><span class="libright">${article.allVote}</span><span class="libleft"><a href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a></span></li>
+											</#list>
+
+											
+
+										</ul>
+										<a href="/booktype" class="more">更多...</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="main">
+						<div class="block">
+							<ul class="cf">
+								<#list articleDayVisit as article>
+									<li style="float:left; width:12.28%;padding:1%; text-align:center;">
+										<a href="/bookinfo?id=${article.id?c}" target="_blank"><img src="/bookimage/${article.id?c}.jpg" style="width:120px; height:150px;"></a>
+										<br>
+										<a class="note" href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a>
+										<br><span class="gray">${article.author}</span>
+									</li>
+								</#list>
+							</ul>
+						</div>
+					</div>
+
+					<div class="main">
+						<div class="block">
+							<div style="width:100%;text-align:center;">
+								<a href="javascript:;" target="_blank"><img src="./src1/25127584a9eb3a2401.jpg"></a>
+							</div>
+							<a href="http://www.aiduwenxue.com/modules/article/articleinfo.php?id=1273" target="_blank">
+							</a>
+						</div>
+						<a href="http://www.aiduwenxue.com/modules/article/articleinfo.php?id=1273" target="_blank">
+						</a>
+					</div>
+					<a href="http://www.aiduwenxue.com/modules/article/articleinfo.php?id=1273" target="_blank">
+
+					</a>
+					<div class="main row">
+						<a href="http://www.aiduwenxue.com/modules/article/articleinfo.php?id=1273" target="_blank">
+						</a>
+						<div class="col3">
+							<a href="http://www.aiduwenxue.com/modules/article/articleinfo.php?id=1273" target="_blank">
+							</a>
+							<div class="block" style="height:365px;">
+								<a href="http://www.aiduwenxue.com/modules/article/articleinfo.php?id=1273" target="_blank">
+									<div class="blocktitle">字数榜</div>
+								</a>
+								<div class="blockcontent">
+									<a href="http://www.aiduwenxue.com/modules/article/articleinfo.php?id=1273" target="_blank">
+									</a>
+									<a href="/booktype" class="moretop">更多...</a>
+									<ul class="ulnum">
+										<#list articleSize as article>
+											<#if (article_index<3)>
+												<li><em>${article.size}</em> <b>${article_index+1}</b>
+													<a href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a>
+												</li>
+												<#else>
+													<li><em>${article.size}</em> <i>${article_index+1}</i>
+														<a href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a>
+													</li>
+											</#if>
+											
+										</#list>
+										
+
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="col6">
+							<div class="block" style="height:365px;">
+								<div class="blocktitle">
+									<ul class="tabb tab2">
+										<li>
+											<a href="javascript:void(0)" onmouseover="selecttab(this)" class="selected">最近更新</a>
+										</li>
+										<li>
+											<a href="javascript:void(0)" onmouseover="selecttab(this)">高点击更新</a>
+										</li>
+									</ul>
+								</div>
+								<div class="blockcontent">
+									<div>
+										<ul class="ulmul" style="width:100%">
+											<#list articleLastUpdate as article>
+												<li class="fl lm" style="width:70%;">[${article.type.typeName}] 《
+													<a class="pop" href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a>》
+													<a href="/read?id=${article.lastChapter.id?c}" target="_blank"> ${article.lastChapter.chapterName}</a>
+												</li>
+												<li class="fr tr" style="width:30%;">
+													<a class="note" href="#" target="_blank">${article.author}</a> ${article.lastUpdate?string("(MM-dd)")}</li>
+											</#list>
+
+											
+										</ul>
+										<div class="more">
+											<a href="/booktype">更多...</a>
+										</div>
+									</div>
+									<div style="display:none;">
+										<#list articleAllVisit as article>
+											<#if (article_index<13)>
+												<li class="fl lm" style="width:70%;">[${article.type.typeName}] 《
+													<a class="pop" href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a>》
+													<a href="/read?id=${article.lastChapter.id?c}" target="_blank"> ${article.lastChapter.chapterName}</a>
+												</li>
+												<li class="fr tr" style="width:30%;">
+													<a class="note" href="#" target="_blank">${article.author}</a> ${article.lastUpdate?string("(MM-dd)")}</li>
+											</#if>
+											</#list>
+										<div class="more">
+											<a href="/booktype">更多...</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col3 last">
+							<div class="block" style="height:365px;">
+								<div class="blocktitle">最新入库</div>
+								<div class="blockcontent">
+									<a href="/booktype" class="moretop">更多...</a>
+									<ul class="ulnum">
+										<#list articlePostDate as article>
+											<#if (article_index<3)>
+												<li><em>${article.postDate?string("MM-dd")}</em> <b>${article_index+1}</b>
+													<a href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a>
+												</li>
+											<#else>
+												<li><em>${article.postDate?string("MM-dd")}</em> <i>${article_index+1}</i>
+													<a href="/bookinfo?id=${article.id?c}" target="_blank">${article.name}</a>
+												</li>
+											</#if>
+										</#list>
+										
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="main">
+						<div class="block">
+							<div class="blockcontent">
+								<div class="blocktitle" style="margin:-10px;width:1000px;padding-top:2px;">友情链接</div>
+								<div class="blockcontent">
+									<p class="kailin_friendlink">
+										<a href="http://www.sarft.gov.cn/" target="_blank" title="国家新闻出版广电总局">国家新闻出版广电总局</a>
+										<a href="http://www.cnpubg.com/" target="_blank" title="中国出版集团公司 ">中国出版集团公司 </a>
+										<a href="http://www.ppm.cn/" target="_blank" title="江苏凤凰出版传媒集团">江苏凤凰出版传媒集团</a>
+										<a href="http://www.cepmg.com.cn/" target="_blank" title="中国教育出版传媒集团">中国教育出版传媒集团</a>
+										<a href="http://www.sjfx.com/sjfx/index.asp" target="_blank" title="上海世纪出版股份有限公司">上海世纪出版股份有限公司</a>
+										<a href="http://www.apgmart.com/" target="_blank" title="安徽出版集团">安徽出版集团</a>
+										<a href="http://www.jlpg.cn/" target="_blank" title="吉林出版集团">吉林出版集团</a>
+										<a href="http://www.gdpg.com.cn/" target="_blank" title="广东省出版集团 ">广东省出版集团</a>
+										<a href="http://www.gzpg.com.cn/" target="_blank" title="贵州出版集团">贵州出版集团</a>
+										<a href="http://www.bbtpress.gxnu.edu.cn/" target="_blank" title="广西师范大学出版社集团">广西师范大学出版社集团</a>
+										<a href="http://www.cpi1993.com/" target="_blank" title="商务印书馆国际有限公司 ">商务印书馆国际有限公司</a>
+										<a href="http://www.sdxjpc.com/main/" target="_blank" title="生活·读书·新知 三联书店">生活·读书·新知 三联书店</a>
+										<a href="http://www.cqshangshi.com/" target="_blank" title="重庆上师文化传媒有限公司">重庆上师文化传媒有限公司</a>
+										<a href="http://www.21cnve.cn/" target="_blank" title="第一职教传媒网">第一职教传媒网</a>
+										<a href="http://www.wxy.sdnu.edu.cn/wangluowenxue" target="_blank" title="山东师范大学网络文学研究中心">山东师范大学网络文学研究中心</a>
+									</p>
+									<p class="kailin_friendlink_zuojia">
+										<a href="http://www.chinawriter.com.cn/" target="_blank" title="中国作家网">中国作家网</a>
+										<a href="http://chuban.dangdang.com/pc" target="_blank" title="当当网阅读">当当阅读</a>
+										<a href="http://book.qq.com/" target="_blank" title="腾讯文学">腾讯文学</a>
+										<a href="http://www.zongheng.com/" target="_blank" title="纵横中文网">纵横中文网</a>
+										<a href="http://www.kanshu.com/" target="_blank" title="看书网">看书网</a>
+										<a href="http://chuangshi.qq.com/" target="_blank" title="创世中文网">创世中文网</a>
+										<a href="http://www1.chineseall.com/" target="_blank" title="中文在线">中文在线</a>
+										<a href="http://yunqi.qq.com/" target="_blank" title="云起书院">云起书院</a>
+										<a href="http://www.readnovel.com/" target="_blank" title="小说阅读网">小说阅读网</a>
+										<a href="http://www.dajianet.com/" target="_blank" title="大佳网">大佳网</a>
+										<a href="http://yc.ifeng.com/" target="_blank" title="凤凰原创">凤凰原创</a>
+										<a href="ttp://www.qwsy.com/" target="_blank" title="蔷薇书院">蔷薇书院</a>
+										<a href="http://www.3gsc.com.cn/" target="_blank" title="3G书城">3G书城</a>
+										<a href="ttp://www.chuangbie.com/" target="_blank" title="创别书城">创别书城</a>
+										<a href="http://www.hongxiu.com/" target="_blank" title="红袖添香">红袖添香</a>
+										<a href="http://www.jjwxc.net/" target="_blank" title="晋江文学城">晋江文学城</a>
+										<a href="http://book.tiexue.net/" target="_blank" title="铁血读书">铁血读书</a>
+										<a href="http://www.qifeng.com/" target="_blank" title="旗峰天下">旗峰天下</a>
+										<a href="http://yc.ireader.com.cn/" target="_blank" title="掌阅小说网">掌阅小说网</a>
+										<a href="http://www.17k.com/" target="_blank" title="17k小说网">17k小说网</a>
+										<a href="http://www.banbijiang.com/" target="_blank" title="半壁江中文网">半壁江中文网</a>
+										<a href="http://www.yuebook.net/" target="_blank">阅文中文网</a>
+										<a href="http://zgwypl.com/" target="_blank"> 中国文艺评论网</a>
+										<a href="http://www.yczw.cc/" target="_blank"> 阅创中文网</a>
+										<a href="http://www.qianyuhuo.com/" target="_blank">千域火</a>
+										<a href="http://xiaoshuo.360.cn/" target="_blank">360小说</a>
+										<a href="http://www.iyunyue.com/" target="_blank">云阅文学网</a>
+										<a href="http://www.cncri.com/" target="_blank">中国版权产业网</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="cb"></div>
+			</div>
+		</div>
+<#include "/footer.html"/>
+	</body>
+
+</html>

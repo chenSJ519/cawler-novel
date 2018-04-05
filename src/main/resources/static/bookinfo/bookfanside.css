@@ -1,0 +1,33 @@
+/* SHUHAI.COM CSS-book.css v1.0 | 2014*/
+
+.box_dwnf1{width:auto;border:1px solid #d2e1f1; border-top:0px; overflow:hidden;}
+.box_dwnf1{height:415px;}
+.box_dwnf1{ padding:10px 8px; }
+
+.list_tf3{ width:auto; height:auto; font-family:"宋体";}
+.list_tf3 li{height:28px; _height:26px; /*_height:24px;*/ font-size:13px; overflow:hidden;}
+.list_tf3 li .sort{ float:left; display:block; width:45px; height:24px; line-height:24px; color:#666; }
+.list_tf3 li p{float:left; width:85%; height:24px; _height:22px; line-height:24px; _line-height:22px; border-bottom:1px dotted #c5c5c5; _border-bottom:1px solid #c5c5c5; font-size:13px; overflow:hidden;}
+.list_tf3 li p .name{float:left; display:block; width:67%; height:24px; _height:22px; line-height:24px; _line-height:22px; padding-right:4px; overflow:hidden;}
+.list_tf3 li p .date{float:left; display:block; width:28%; height:24px; _height:22px; line-height:24px; _line-height:22px; color:#999; font-size:12px; text-align:right;}
+
+.ff_black a:link,.ff_black a:visited {color:#1b1b1b;}
+.ff_black a:hover,.ff_black a:active {color:#3cabdb;}
+
+a.ff_black:link,a.ff_black:visited{ color:#1d1d1d;}
+a.ff_black:hover,a.ff_black:active{ color:#3cabdb;}
+
+.nof,.nof1,.nof2{ display:block; float:left; width:20px; height:29px; line-height:26px; margin-right:5px; text-align:center; color:#fff; background:url(../images/ipg.png) no-repeat;}
+.ldt2 { background-position:-6px -35px; position:absolute; top:0px; _top:100px; left:2px; _left:50px; z-index:3;}
+.nof1{background-position:-6px -35px;}
+.nof2{ background-position:-6px -68px;}
+.nof{ background-position:-6px -100px;}
+
+
+.box_sidef2{ width:auto; height:auto;}
+.box_sidef2 .tf1{ width:auto; height:30px; line-height:30px; border:1px solid #d0f1ef; background:#fff; position:relative;background:url(../images/ico-f.gif) no-repeat 0 -132px;}
+.box_sidef2 .tf1 .forn{ position:absolute; right:0px; top:0px; display:block; width:100px; height:30px; }
+.box_sidef2 .tf1 h2{ font-size:14px; color:#07b1a6; padding-left:20px;}
+
+
+/*.box_sidef2 .tf1 .h2{ height:34px; line-height:34px; color:#07b1a6; padding-left:12px; font-size:14px; background:url(../images/ico-f.gif) no-repeat 0 -132px;}*/

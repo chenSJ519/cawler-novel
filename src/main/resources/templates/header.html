@@ -1,0 +1,140 @@
+
+<div id="BAIDU_DUP_fp_wrapper"
+     style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;">
+    <iframe id="BAIDU_DUP_fp_iframe" src="src/o.html"
+            style="width: 0px; height: 0px; visibility: hidden; display: none;"></iframe>
+</div>
+<div class="Header1">
+    <div class="cont_box">
+        <dl class="nav" id="Q_loginBar1">
+            <dd class="login">
+                <span class="icon"></span>
+                <#if userInfo??><a target="_blank" href="/bookcase">${userInfo.name}</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href="/logout">注销</a>
+                    <#else>
+                        <a target="_blank" href="/login">登录</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a href="/reg">注册</a>
+                </#if>
+
+            </dd>
+            <dd class="histroy">
+                <div class="tit">
+                    <span class="icon"></span>
+                    <a id="his" href="javascript:;">看过</a>
+
+                </div>
+                <#if  userInfo??>
+                    <div class="cont">
+
+                        <#list historyList?reverse as h>
+                            <#if h??>
+                                <div class="list"><a target="_blank" href="/read?id=${h.chapterId}">${h.bookName}</a>
+                            </#if>
+
+
+                    </div>
+                        </#list>
+
+                    <#else>
+                        <div class="cont">
+                            <div class="logout">
+                                <p>Duang, 您还未登录</p>
+                            </div>
+                        </div>
+                </#if>
+                <script type="text/javascript">
+                    $("#his").hover(function () {
+                        $(".histroy").addClass("now");
+                    },function () {
+                        $(".histroy").removeClass("now");
+                    });
+
+                    $(".cont").hover(function () {
+                        $(".histroy").addClass("now");
+                    },function () {
+                        $(".histroy").removeClass("now");
+                    });
+                </script>
+            </dd>
+            <dd class="booklib">
+                <div class="tit">
+                    <span class="icon"></span>
+                    <a target="_blank" href="/bookcase">书架</a>
+                </div>
+                <div class="cont">
+                    <div class="logout">
+                        <p>Duang, 您还未登录</p>
+                    </div>
+                </div>
+            </dd>
+            <!--<dd class="message">-->
+                <!--<div class="tit">-->
+                    <!--<span class="icon"></span>-->
+                    <!--<a href="javascript:Q.login(function(){Q.setIndexLoginInfo(&#39;Q_loginBar1&#39;)});void(0)">消息</a>-->
+                <!--</div>-->
+                <!--<div class="cont">-->
+                    <!--<div class="logout">-->
+                        <!--<p>Duang, 您还未登录</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</dd>-->
+            <!--<dd class="write">-->
+                <!--<span class="icon"></span>-->
+                <!--<a target="_blank" href="javascript:layer.alert('功能待开发', {icon: 6});">写书</a>-->
+            <!--</dd>-->
+            <!--<dd class="recharge">-->
+                <!--<span class="icon"></span>-->
+                <!--<a target="_blank" href="javascript:layer.alert('功能待开发', {icon: 6});">充值</a>-->
+            <!--</dd>-->
+            <!--			<script type="text/javascript">
+        Q.setIndexLoginInfo('Q_loginBar1');
+    </script>-->
+        </dl>
+
+        <a class="logo" href="http://17k.com/"></a>
+
+        <form class="so" target="_blank" action="/booksearch">
+            <input value="帝仙" class="q" type="text" name="keyWord"
+                   onfocus="this.value==this.defaultValue&amp;&amp;this.select()">
+            <input class="m" type="submit" value="搜索">
+        </form>
+    </div>
+</div>
+
+<div class="Nav">
+    <div>
+        <a target="_blank" href="/index" class="now"><span>首页</span></a>
+        <a target="_blank" href="/bookrank"><span>排行榜</span></a>
+        <a target="_blank" href="/booktype"><span>分类</span></a>
+        <a target="_blank" href="javascript:layer.alert('功能待开发', {icon: 6});;"><span>我要写书</span></a>
+        <a target="_blank" href="/booktype?category=2&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1"><span>玄幻奇幻</span></a>
+        <a target="_blank" href="/booktype?category=1&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1"><span>仙侠武侠</span></a>
+        <a target="_blank"
+           href="/booktype?category=14&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1"><span>科幻末世</span></a>
+        <a target="_blank"
+           href="/booktype?category=12&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1"><span>游戏竞技</span></a>
+        <a target="_blank" href="/booktype?category=5&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1"><span>悬疑小说</span></a>
+        <a target="_blank" href="/booktype?category=-1&action=0&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1"><span>连载</span></a>
+        <a target="_blank" href="/booktype?category=-1&action=1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1"><span>完本</span></a>
+        <a target="_blank" href="javascript:;"><span>论坛</span></a>
+        <script type="text/javascript">
+            Q.floatNav(Q.lastTag('div'));
+        </script>
+    </div>
+</div>
+<div class="Nav FloatNav" style="display: none;">
+    <div>
+        <a target="_blank" href="http://www.17k.com/" class="now"><span>首页</span></a>
+        <a target="_blank" href="http://top.17k.com/"><span>排行榜</span></a>
+        <a target="_blank" href="http://all.17k.com/lib/book.html"><span>分类</span></a>
+        <a target="_blank" href="http://www.17k.com/main-beAuthor.action"><span>我要写书</span></a>
+        <a target="_blank" href="http://www.17k.com/man/"><span>男生频道</span></a>
+        <a target="_blank" href="http://mm.17k.com/"><span>女生频道</span></a>
+        <a target="_blank" href="http://www.17k.com/gexing/"><span>个性频道</span></a>
+        <a target="_blank" href="http://zhuanti.17k.com/wwls/pc/index.html"><span>网文联赛</span></a>
+        <a target="_blank" href="http://www.17k.com/adaptation/index.html"><span>IP改编</span></a>
+        <a target="_blank" href="http://www.17k.com/mianfei/"><span>免费</span></a>
+        <a target="_blank" href="http://www.17k.com/quanben/"><span>完本</span></a>
+        <a target="_blank" href="http://bbs.17k.com/portal.php"><span>论坛</span></a>
+    </div>
+</div>

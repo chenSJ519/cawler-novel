@@ -1,0 +1,9 @@
+.clearfix{clear: both;}
+.fl{float: left;}
+.rl{float: right;}
+.tier_con{width: 567px;background: #fff;background:#fff url(../images/bg.jpg) repeat-x;}
+.tier_con .tier_title{height: 60px;line-height: 60px;color: #4c4c4c;font-size: 24px;font-weight: bold;padding-left: 20px;font-family: "微软雅黑";}
+.tier_con p{margin:20px 0px 20px 20px;font-size: 16px;}
+.tier_con .tier_x{margin:0px 0px 30px 20px;}
+.tier_con .tier_x label{margin:0px 40px 0px 0px;font-size: 16px;}
+.tier_con .tierbut{width: 292px;height: 42px;background: url(../images/but.png);border: none;color: #fff;font-size: 16px;margin-left:135px;margin-bottom: 30px;cursor: pointer;}

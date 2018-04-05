@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://book.qidian.com/info/1003698462 -->
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<title>《${book.name}》_${book.author}著_${book.type.typeName}</title>
+		<meta name="robots" content="all">
+		<meta name="googlebot" content="all">
+		<meta name="baiduspider" content="all">
+		<meta http-equiv="mobile-agent" content="format=wml; url=http://m.qidian.com/book/showbook.aspx?bookid=1003698462">
+		<meta http-equiv="mobile-agent" content="format=xhtml; url=http://m.qidian.com/book/showbook.aspx?bookid=1003698462">
+		<meta http-equiv="mobile-agent" content="format=html5; url=http://m.qidian.com/book/showbook.aspx?bookid=1003698462">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<meta name="renderer" content="webkit">
+
+
+		<link rel="stylesheet" data-ignore="true" href="./bookinfo/vote_popup.0.32.css">
+
+		<!--身体-->
+		<link href="./bookinfo/book.css" type="text/css" rel="stylesheet">
+		<link href="./bookinfo/bookfanside.css" type="text/css" rel="stylesheet">
+		<link rel="stylesheet" href="./bookinfo/jquery.validator.css">
+		<link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
+		<script type="text/javascript" src="./bookinfo/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="./bookinfo/layer.js"></script>
+		<link type="text/css" rel="stylesheet" href="./bookinfo/layer.css" id="skinlayercss">
+		<script type="text/javascript" src="./bookinfo/page.js"></script>
+		<script type="text/javascript" src="./bookinfo/swipe.js"></script>
+		<script type="text/javascript" src="./bookinfo/jquery.validator.js"></script>
+		<script type="text/javascript" src="./bookinfo/zh_CN.js"></script>
+		<script src="./bookinfo/share.js"></script>
+		<link href="./bookinfo/share.css" rel="styleSheet" type="text/css">
+		<!--<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="layer/layer.js" type="text/javascript" charset="utf-8"></script>
+	
+		<script type="text/javascript">
+			function addBook(id) {
+				var username=<#if userInfo??>true<#else>false</#if>;
+				if(username){
+					$.ajax({
+				    url:"/addBook?id="+id,
+					type:"post",
+					success:function (data) {
+						if(data=="success")
+						{
+						    
+						    layer.alert('加入书架成功', {icon: 6})
+						}else
+						{
+							layer.alert('已经加入书架了哦', {icon: 6})
+
+						}
+                    },
+					error:function () {
+						layer.alert('服务器内部错误', {icon: 6})
+                    }
+				})
+				}else{
+					layer.alert('要先登陆哦', {icon: 6})
+					layer.confirm('要先登陆哦', {
+						  btn: ['登陆','就不登陆'] //按钮
+						}, function(){
+						 location.href="/bookcase";
+						}, function(){
+						 
+					
+				})
+				}
+				
+            }
+			
+			function addVote(id) {
+			var username=<#if userInfo??>true<#else>false</#if>;
+				if(username){
+					$.ajax({
+				    url:"/addVote?id="+id,
+					type:"post",
+					success:function (data) {
+						if(data=="success")
+						{
+						    
+						    layer.alert('推荐成功', {icon: 6})
+						}else
+						{
+							layer.alert('已经推荐了哦', {icon: 6})
+
+						}
+                    },
+					error:function () {
+						layer.alert('服务器内部错误', {icon: 6})
+                    }
+				})
+				}else{
+					layer.alert('要先登陆哦', {icon: 6})
+					layer.confirm('要先登陆哦', {
+						  btn: ['登陆','就不登陆'] //按钮
+						}, function(){
+						 location.href="/addVote";
+						}, function(){
+						 
+					
+				})
+            }
+				}
+		</script>
+		
+	</head>
+
+	</head>
+
+	<body style="zoom: 1;">
+		<#include "/qidian.html"/>
+		<div class="wrap fix">
+			<div class="article">
+				<div class="book_top fix">
+					<div class="path f_gray3 mb20">
+						<p class="fl"><span class="g6">当前位置：</span>
+							<a href="http://www.***.com/" target="_blank">书海首页</a>&gt;
+							<a href="javascript:;" target="_blank">都市小说</a>&gt; ${book.name}</p>
+						<div class="bdsharebuttonbox fr bdshare-button-style0-16" style=" width:28%; position:relative; top:2px;" data-bd-bind="1483503115328"><span class="fl">分享到：</span>
+							<a href="##" class="bds_more" data-cmd="more"></a>
+							<a href="##" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+							<a href="##" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+							<a href="##" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+							<a class="bds_count" data-cmd="count" title="累计分享8次">8</a>
+						</div>
+						<script>
+							window._bd_share_config = {
+								"common": {
+									"bdSnsKey": {},
+									"bdText": "${book.name}是井冈中文网作者${book.author}精心打造的一部都市小说，井冈中文网第一时间提供${book.name}最新章节及全文阅读。更多热门首发小说，请上井冈中文网www.***.com。",
+									"bdMini": "2",
+									"bdMiniList": false,
+									"bdPic": "#article/image/33/33888/33888l.jpg",
+									"bdStyle": "0",
+									"bdSize": "16",
+									"bdCustomStyle": "#v1/style/share.css"
+								},
+								"share": {}
+							};
+							with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+						</script>
+					</div>
+					<div class="book_top_l">
+						<div class="img">
+							<a href="#33888/" title="${book.name}"><img src="/bookimage/${book.id}.jpg" alt="${book.name}"></a>
+						</div>
+						<div class="ope">
+							<a href="/mulu?id=${book.id}" target="_blank" class="on" title="开始阅读${book.name}">立即阅读</a>
+							<a href="javascript:;" onclick="addVote(${book.id})" title="给${book.name}投票">投票推荐</a>
+							<a href="javascript:;" onclick="addBook(${book.id})" title="将${book.name}加入书架">加入书架</a>
+							<a href="/download?id=${book.id}"  >下载成txt</a>
+						</div>
+					</div>
+					<div class="book_top_r">
+						<div class="t">
+							<h2 class="name">${book.name}</h2></div>
+						<p class="author">作者：
+							<a href="#140595.html" target="_blank" class="f_gray3" ajaxhover="true" uid="140595">${book.author}</a>
+						</p>
+						<div class="tabbox_bk">
+							<div class="tt1">
+								<ul class="tabs_bk" id="tabs1">
+									<li class="thistab">
+										<a href="javascript:void(0);">作品简介</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);">作品信息</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);">作者信息</a>
+									</li>
+								</ul>
+							</div>
+							<ul class="tab_conbox_bk" id="tab_conbox1">
+								<li class="one" style="display: list-item;">
+									<p class="intro">
+										&nbsp;&nbsp;&nbsp;&nbsp;${book.intro}
+									</p>
+									<div class="fr blue2 poi" id="zhan">+点击展开</div>
+								</li>
+								<li class="two g3" style="display:none;">
+									<dl class="fix">
+										<dd><em>作品类别：</em>${book.type.typeName}</dd>
+										<dd><em>文章状态：</em><#if book.state==0>连载中<#else>已完结</#if></dd>
+										<dd><em>总点击数：</em>${book.allVisit}</dd>
+										<dd><em>总推荐数：</em>${book.allVote}</dd>
+										<dd><em>全文长度：</em>${book.size}字</dd>
+										<dd><em>最后更新：</em>${book.lastUpdate?string("yyyy-MM-dd")}</dd>
+									</dl>
+								</li>
+								<li class="three" style="display:none;">
+									<a href="javascript:;" target="_blank" title="了解作者，进入他的主页" class="f_blue4">了解作者，进入他的主页</a>
+									<div class="tags f_blue4 fix"><em class="g3 fl">他的其他作品:（${articleAuthorList?size}）本</em>
+										<a href="javascript:;" target="_blank" class="b fr">所有作品&gt;&gt;</a>
+									</div>
+									<dl>
+										<#list articleAuthorList as article>
+											<dd>
+												<p class="tname">
+													<a href="/bookinfo?id=${article.id}" target="_blank" class="f_blue4">《${article.name} 》</a>
+												</p>
+												<p class="sort"><em>分类：</em>${article.type.typeName}</p>
+												<p class="staus"><em>状态：</em><#if article.state==0>连载中<#else>已完结</#if></p>
+												<p class="num"><em>总字数：</em>${article.size}</p>
+											</dd>
+										</#list>
+
+									</dl>
+								</li>
+							</ul>
+						</div>
+						<p class="wap">使用手机输入m.shuhai.com,直接在手机上阅读这部书！</p>
+						<div class="new">
+							<div class="new_chapter f_blue">
+								<span class="tt g9">最新章节：</span>
+								
+								<a href="<#if book.isStatic==0>/read?id=${book.lastChapter.id}<#else>/chapterstatic/${book.lastChapter.id}.html</#if>" target="_blank">${book.lastChapter.chapterName}<em class="iv"></em></a>
+								<span class="time g9">2016-12-28 02:30:00</span>
+							</div>
+							<#if book.isStatic==0><p class="new_summary"> ${book.lastChapter.txt?substring(0,110)}……<#else></#if>
+							
+							</p>
+						</div>
+					</div>
+				</div>
+				<script type="text/javascript" src="./bookinfo/article_book.js"></script>
+				<div class="box" id="guesslike">
+					<div class="maylike">
+						<span class="maylike_s">猜你喜欢</span>
+						<div class="backright"><span class="changes">换一换</span></div>
+					</div>
+					<div class="picbox">
+						<ul class="piclist mainlist" style="width: 1416px;">
+							<#list articleAllVisit as article>
+								<li>
+									<a href="/bookinfo?id=${article.id}" target="_blank"><img src="bookimage/${article.id}.jpg" alt="${article.name}" title="${article.name}"></a>
+									<a href="/bookinfo?id=${article.id}" class="aname f_black" target="_blank">${article.name}</a>
+								</li>
+							</#list>
+						
+						</ul>
+						<ul class="piclist swaplist" style="width: 1416px;">
+							<#list articleAllVote as article>
+								<li>
+									<a href="/bookinfo?id=${article.id}" target="_blank"><img src="bookimage/${article.id}.jpg" alt="${article.name}" title="${article.name}"></a>
+									<a href="/bookinfo?id=${article.id}" class="aname f_black" target="_blank">${article.name}</a>
+								</li>
+							</#list>
+						</ul>
+					</div>
+				</div>
+				<div class="bk_comment mt10">
+					<div class="t" id="pro">
+						<ul class="tabs_comm" id="tabs2">
+							<li id="mostnew" class="thistab">
+								<a class="pr15" href="javascript:void(0);" onclick="return false;">最新评论</a>
+							</li>
+							<!--<li id="goodli">-->
+								<!--<a href="javascript:void(0);">精华评论</a>-->
+							<!--</li>-->
+						</ul>
+						<!--<p class="fr g6 f14 pt5 pr10">共<em class="b" style="color:red;" id="count">  </em>条评论</p>-->
+					</div>
+					<ul class="tab_conbox_comm" id="tab_conbox2">
+						<!-- 多说评论框 start -->
+						<div class="ds-thread" data-thread-key="${book.id}" data-title="${book.name}" data-url="www.myjgs.com.cn"></div>
+
+						<!-- 多说评论框 end -->
+						<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+						<script type="text/javascript">
+                            var duoshuoQuery = {short_name:"myjgs"};
+                            (function() {
+                                var ds = document.createElement('script');
+                                ds.type = 'text/javascript';ds.async = true;
+                                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                                ds.charset = 'UTF-8';
+                                (document.getElementsByTagName('head')[0]
+                                || document.getElementsByTagName('body')[0]).appendChild(ds);
+                            })();
+						</script>
+						<!-- 多说公共JS代码 end -->
+					</ul>
+					<a name="maodian"></a>
+				</div>
+			</div>
+			<div class="aside">
+				<div class="moving">
+					<h3 class="t">作品动态</h3>
+					<dl class="f_gray3 fix mulitline">
+
+						<dd style="margin-top: 0px;"><span class="name"><a href="javascript:;" ajaxhover="true" uid="386619" target="_blank">gjjis007</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="815333" target="_blank">110527</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>1张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="815333" target="_blank">110527</a></span>
+							<p class="data">
+								<span class="nm">投月票</span>1张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="815333" target="_blank">110527</a></span>
+							<p class="data">
+								<span class="nm">投月票</span>1张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1471360" target="_blank">豆豆母婴坊夷亭一村3幢2室</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="667161" target="_blank">43061119780306</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>5张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="667161" target="_blank">43061119780306</a></span>
+							<p class="data">
+								<span class="nm">投月票</span>2张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="#937831.html" ajaxhover="true" uid="937831" target="_blank">13752463502</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1465821" target="_blank">tm383935010</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1463080" target="_blank">13987402640</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1053672" target="_blank">轩缘机车天能电池</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1432577" target="_blank">qqNQj7jY</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1432577" target="_blank">qqNQj7jY</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>1张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1410970" target="_blank">。Lxp7Zl</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1389437" target="_blank">tan881123</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="635855" target="_blank">262536768</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>5张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1242039" target="_blank">樊五哥</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1241329" target="_blank">wm1990yy</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="635855" target="_blank">262536768</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>5张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1368545" target="_blank">lizh964</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="635855" target="_blank">262536768</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>5张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="635855" target="_blank">262536768</a></span>
+							<p class="data">
+								<span class="nm">投月票</span>2张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1390266" target="_blank">爱親仙红</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1298659" target="_blank">15914174441</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1292130" target="_blank">王吉星</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1286999" target="_blank">任晓东</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1293319" target="_blank">13880639583</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1235848" target="_blank">doufu2115</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1124532" target="_blank">晋熙223</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="626269" target="_blank">136*****879</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1243202" target="_blank">yaoyao11</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="622066" target="_blank">xjlzgn</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1247189" target="_blank">西乌电力</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1277864" target="_blank">好名都</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1198483" target="_blank">2301204088</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1287560" target="_blank">柳飞</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1271646" target="_blank">覃儒彬</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1246845" target="_blank">红尘一丈剑</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1239214" target="_blank">15593397616</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1230839" target="_blank">成都</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="116118" target="_blank">hzs123123</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1226822" target="_blank">b54088g</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1186977" target="_blank">13944171622</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1194391" target="_blank">13862712365</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1190236" target="_blank">ZJ750901</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1198997" target="_blank">452579496</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1195006" target="_blank">yuan6956035</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1192196" target="_blank">569115446</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1191930" target="_blank">冰吻k8yTbm</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="815333" target="_blank">110527</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="764749" target="_blank">爱的0钱耶</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1177682" target="_blank">圣霸神途客服</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="842617" target="_blank">兰州盛承电子科技有限公司</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1141080" target="_blank">1868dfghjkl</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1125143" target="_blank">爱你不变、一生何求……挑战自我</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1141708" target="_blank">和尚01INqI</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1121299" target="_blank">lzdydxl</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1148538" target="_blank">ha8813</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1145344" target="_blank">弧弧</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="667161" target="_blank">43061119780306</a></span>
+							<p class="data">
+								<span class="nm">投月票</span>2张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="3910" target="_blank">食色和尚</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="715348" target="_blank">15125339756</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="907752" target="_blank">萧妖</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>2张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="907752" target="_blank">萧妖</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>2张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1123040" target="_blank">17785771399</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1127241" target="_blank">Cxxx</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="708119" target="_blank">18915153095</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>2张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="914586" target="_blank">1095987485</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="732281" target="_blank"> 封尘往昔</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1000551" target="_blank">潇遥</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="907752" target="_blank">萧妖</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>2张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1099834" target="_blank">明善</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="662479" target="_blank">18717737271</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1053666" target="_blank">myl6596</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="147947" target="_blank">18255685725</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="940870" target="_blank">大地中华</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="1031726" target="_blank">虚情假意KFC8o2</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="250883" target="_blank">s199711175</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>1张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="250883" target="_blank">s199711175</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="932198" target="_blank">13421021769</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="722138" target="_blank">yang13648683575</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="808646" target="_blank">sunbing6768</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="672083" target="_blank">男人要有担当</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="520229" target="_blank">书虫a</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="805140" target="_blank">changchangnSBOBM</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="780218" target="_blank">难民一个</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="764610" target="_blank">13507052803</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="243383" target="_blank">刘辉</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="775388" target="_blank">陈zs123</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="635855" target="_blank">262536768</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>1张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="757602" target="_blank">蝴蝶飞飞0MJwKh</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="220074" target="_blank">jjm147369</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="635855" target="_blank">262536768</a></span>
+							<p class="data">
+								<span class="nm">投月票</span>2张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="635855" target="_blank">262536768</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>2张
+							</p>
+						</dd>
+						<dd><span class="name"><a href="javascript:;" ajaxhover="true" uid="635855" target="_blank">262536768</a></span>
+							<p class="data">
+								<span class="nm">投推荐</span>3张
+							</p>
+						</dd>
+						<dd style="margin-top: 0px;"><span class="name"><a href="javascript:;" ajaxhover="true" uid="1533204" target="_blank">jl555555</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd style="margin-top: 0px;"><span class="name"><a href="javascript:;" ajaxhover="true" uid="815333" target="_blank">110527</a></span>
+							<p class="data">
+								<span class="nm">投月票</span>2张
+							</p>
+						</dd>
+						<dd style="margin-top: 0px;"><span class="name"><a href="javascript:;" ajaxhover="true" uid="815333" target="_blank">110527</a></span>
+							<p class="data">
+								<span class="nm">捧场</span>200书海币
+							</p>
+						</dd>
+						<dd style="margin-top: 0px;"><span class="name"><a href="javascript:;" ajaxhover="true" uid="226689" target="_blank">weichuan</a></span>
+							<p class="data">
+								<span class="nm">收藏</span>1次
+							</p>
+						</dd>
+						<dd style="margin-top: 0px;"><span class="name"><a href="javascript:;" ajaxhover="true" uid="815333" target="_blank">110527</a></span>
+							<p class="data">
+								<span class="nm">捧场</span>100书海币
+							</p>
+						</dd>
+					</dl>
+					<div class="ope2">
+						<a href="javascript:;" onclick="huodong(&#39;http:#;);" class="vote">投月票</a>
+						<a href="javascript:;" onclick="huodong(&#39;http:#);" class="reward">打赏书</a>
+						<a href="javascript:;" onclick="alert(&#39;建设中...&#39;);" class="urge">催更新</a>
+					</div>
+				</div>
+				<div class="box_side2 mt10">
+					<div class="t1">
+						<h2>粉丝榜</h2><span class="orn"><p style="text-align:right;padding-right: 20px;">
+<a href="/bookrank" target="_blank" title="更多排名" style="margin-right: 15px; color:#999 ;">更多排名</a>
+</p></span></div>
+					<div id="bdn1" class="box_dwnf1" style="height:280px;">
+						<ul class="list_tf3 ff_black">
+							<li>
+								<em class="nof1">1</em>
+								<p>
+									<span class="name">
+<a href="javascript:;" uid="386619" target="_blank">
+gjjis007
+</a>
+</span>
+									<span class="date">
+<img src="./bookinfo/5.png">
+</span>
+								</p>
+							</li>
+							<li>
+								<em class="nof2">2</em>
+								<p>
+									<span class="name">
+<a href="javascript:;" uid="116118" target="_blank">
+hzs123123
+</a>
+</span>
+									<span class="date">
+<img src="./bookinfo/5.png">
+</span>
+								</p>
+							</li>
+							<li>
+								<em class="nof2">3</em>
+								<p>
+									<span class="name">
+<a href="javascript:;" uid="815333" target="_blank">
+110527
+</a>
+</span>
+									<span class="date">
+<img src="./bookinfo/4.png">
+</span>
+								</p>
+							</li>
+							<li>
+								<em class="nof">4</em>
+								<p>
+									<span class="name">
+<a href="javascript:;" uid="635855" target="_blank">
+262****68
+</a>
+</span>
+									<span class="date">
+<img src="./bookinfo/4.png">
+</span>
+								</p>
+							</li>
+							<li>
+								<em class="nof">5</em>
+								<p>
+									<span class="name">
+<a href="javascript:;" uid="842617" target="_blank">
+兰州盛承电子科技有限公司
+</a>
+</span>
+									<span class="date">
+<img src="./bookinfo/4.png">
+</span>
+								</p>
+							</li>
+							<li>
+								<em class="nof">6</em>
+								<p>
+									<span class="name">
+<a href="javascript:;" uid="727376" target="_blank">
+133****0066
+</a>
+</span>
+									<span class="date">
+<img src="./bookinfo/4.png">
+</span>
+								</p>
+							</li>
+							<li>
+								<em class="nof">7</em>
+								<p>
+									<span class="name">
+<a href="javascript:;" uid="808646" target="_blank">
+sunbing6768
+</a>
+</span>
+									<span class="date">
+<img src="./bookinfo/3.png">
+</span>
+								</p>
+							</li>
+							<li>
+								<em class="nof">8</em>
+								<p>
+									<span class="name">
+<a href="javascript:;" uid="130493" target="_blank">
+zl59838199
+</a>
+</span>
+									<span class="date">
+<img src="./bookinfo/3.png">
+</span>
+								</p>
+							</li>
+							<li>
+								<em class="nof">9</em>
+								<p>
+									<span class="name">
+<a href="javascript:;" uid="1195006" target="_blank">
+yuan6956035
+</a>
+</span>
+									<span class="date">
+<img src="./bookinfo/3.png">
+</span>
+								</p>
+							</li>
+							<li>
+								<em class="nof">10</em>
+								<p>
+									<span class="name">
+<a href="javascript:;" uid="238079" target="_blank">
+阿杰在宁波
+</a>
+</span>
+									<span class="date">
+<img src="./bookinfo/3.png">
+</span>
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="bk_author mt10">
+					<h3 class="t">作者有话说</h3>
+					<p>新书，求支持！</p>
+				</div>
+				<div class="tabbox_sid mt10">
+					<div class="tt1">
+						<ul class="tabs_sid" id="tabs3">
+							<li class="thistab">
+								<a href="javascript:;">高点击</a>
+							</li>
+							<li>
+								<a href="javascript:;">高推荐</a>
+							</li>
+						</ul>
+					</div>
+					<ul class="tab_conbox_sid" id="tab_conbox3">
+						<li class="sid" style="display: list-item;">
+							<dl class="list_t1d f_black fix">
+								<#list articleAllVisit as article>
+									<dd>
+										<a href="/booktype?category=${article.type.id}&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1" class="sort" title="${article.type.typeName}">[${article.type.typeName?substring(0,2)}]</a><span class="name"><a href="/bookinfo?id=${article.id}" target="_blank" title="${article.name}" class="f_black">${article.name}</a></span></dd>
+								</#list>
+								
+							</dl>
+						</li>
+						<li class="sid" style="display:none">
+							<dl class="list_t1d f_black fix">
+								<#list articleAllVote as article>
+									<dd>
+										<a href="/booktype?category=${article.type.id}&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1" class="sort" title="${article.type.typeName}">[${article.type.typeName?substring(0,2)}]</a><span class="name"><a href="/bookinfo?id=${article.id}" target="_blank" title="${article.name}" class="f_black">${article.name}</a></span></dd>
+								</#list>
+								
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<div class="box_side2 mt10">
+					<div class="t1">
+						<h2>站长吐血推荐</h2><span class="orn"></span></div>
+					<div class="box_dwn1" style="height:280px;">
+						<ul class="list_t3 f_black">
+							<#list articleRecommend as article>
+								<li><span class="sort">[<a href="/booktype?category=${article.type.id}&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1" target="_blank" title="${article.type.typeName}">${article.type.typeName}</a>]</span>
+									<p><span class="name" style="width:auto;"><a href="/bookinfo?id=${article.id}" target="_blank" title="${article.name}">${article.name}</a></span><span class="date"></span></p>
+								</li>
+							</#list>
+						
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<#include "/footer.html"/>
+	</body>
+
+</html>

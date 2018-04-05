@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+<title>帐号登录 | 中文网_中文网_阅文集团旗下网站</title>
+<meta name="description" content="小说阅读,精彩小说尽在中文网. 中文网提供玄幻小说,武侠小说,原创小说,网游小说,都市小说,言情小说,青春小说,历史小说,军事小说,网游小说,科幻小说,恐怖小说,首发小说,最新章节免费">
+<meta name="keywords" content="小说,小说网,玄幻小说,武侠小说,都市小说,历史小说,网络小说,言情小说,青春小说,原创网络文学">
+<meta name="robots" content="all">
+<meta name="googlebot" content="all">
+<meta name="baiduspider" content="all">
+<meta http-equiv="mobile-agent" content="format=wml; url=http://m.qidian.com">
+<meta http-equiv="mobile-agent" content="format=xhtml; url=http://m.qidian.com">
+<meta http-equiv="mobile-agent" content="format=html5; url=http://h5.qidian.com/bookstore.html">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="renderer" content="webkit"/>
+<title>帐号登录 | 中文网</title>
+<link rel="stylesheet" type="text/css" href="login/pact.css"/>
+<script src="/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	function keyLogin()
+	{
+		 if (event.keyCode == 13)
+	    {
+	        login();
+	    }
+	}
+	function login()
+	{
+		var username=$("#username").val();
+		var password=$("#password").val();
+		$.ajax({
+			type:"post",
+			url:"/login.do",
+			async:false,
+			data:{username:username,password:password},
+			success:function(data)
+			{
+				if(data.info=="success")
+				{
+					location.href=data.url;
+//					alert("success")
+				}else{
+//					alert("error");
+					$(".error-tip:eq(0)").text("您输入的帐号或密码不正确，请重新输入");
+					$(".error-tip:eq(0)").removeClass("hidden");
+				}
+			},
+			error:function()
+			{
+				$(".error-tip:eq(0)").text("服务器内部错误");
+			}
+		});
+	}
+</script>
+<div class="wrap">
+    <!-- start 头部 -->
+    <div class="header ">
+        <div class="box-center">
+            <div class="logo"><a href="http://www.qidian.com" target="_blank"></a></div>
+        </div>
+    </div>
+    <!-- end 头部 -->
+
+    <!-- start 整体居中 -->
+    <div class="box-center">
+        <!-- start 登录区块 -->
+        <div class="login-area-wrap cf">
+            <!-- start 运营图 -->
+            <div class="login-op-img fl">
+                <a href="http://activity.qidian.com/newuser/index" target="_blank"><img src="/login/loginBg.jpg" alt="登录"></a>
+            </div>
+            <!-- end 运营图 -->
+
+            <!-- start 登录区 -->
+<div class="login-wrap fl">
+        <!-- start 登录切换 -->
+    <div class="login-tab cf" id="j_loginTab">
+        <ul>
+                            <li class="lang act stat" tab="qidian" data-stat="qd_L01|账号登录|1">帐号登录</li>
+                    </ul>
+    </div>
+    <!-- end 登录切换 -->
+
+    <!-- start 登录切换容器 -->
+    <div class="login-switch-wrap" id="j_loginSwitchWrap">
+        <!-- start 登录 -->
+        <div class="qd-login login-box ">
+
+                        <!-- start 普通登录 -->
+            <div class="normal-login" id="j_normalLogin">
+                <div class="error-tip hidden"></div>
+                <ul>
+                    <li><input onkeydown="keyLogin()" type="text" tabindex="1" placeholder="帐号/手机号/邮箱" id="username"></li>
+                    <li><input onkeydown="keyLogin()" type="password" tabindex="2" id="password" placeholder="密码"></li>
+                </ul>
+                <div class="auto-login-box cf">
+                    <div class="link fr">
+                        <a href="#" target="_blank" id="forgetPsw">忘记密码</a>
+                        <em></em>
+                        <a href="/reg" target="_blank" id="regQd">免费注册</a>
+                    </div>
+                    <input type="checkbox" id="autologin" tabindex="3" name="checkbox" checked="checked">
+                    <label for="autologin" class="ui-checkbox stat" data-stat="qd_L04|勾选自动登录|2" data-off-stat="qd_L05|取消自动登录|2"></label><label for="autologin">自动登录</label>
+                </div>
+                <a class="red-btn go-login btnLogin" tabindex="4"  href="javascript:"  onclick="login()">登 录</a>
+                </div>
+            <!-- end 普通登录 -->
+
+            <!-- start 扫码登录  -->
+            <div class="scan-login hidden" id="j_scanLogin">
+                <h3>手机扫码 安全登录</h3>
+                <p>使用<a href="http://www.yuewen.com/app.html#appqd" target="_blank" id="showScan">读书客户端</a>扫一扫登录</p>
+                <div class="error-tip hidden"></div>
+                <img src="" alt="二维码" id="imgQrCode">
+            </div>
+            <!-- end 扫码登录 -->
+            
+            <!-- start 验证码  -->
+            <div class="code-login hidden" id="j_codeLogin">
+                <div class="error-tip hidden"></div>
+                <div class="code-img">
+                    <img id="imgCode" src="" alt="这里是图形验证码" class="stat" data-stat="qd_L07|账号登录-验证码换一张|2"><a href="javascript:" id="btnRefreshCode" class="stat" data-stat="qd_L07|账号登录-验证码换一张|2">点击换一张</a>
+                </div>
+                <ul>
+                    <li><em class="iconfont">&#xe646;</em><input id="txtCode" type="text" tabindex="4" placeholder="请输入验证码"></li>
+                </ul>
+                <a class="red-btn go-login btnLogin" tabindex="2" href="javascript:">登 录</a>
+            </div>
+            <!-- end 验证码 -->
+            
+            <!-- start 其他登录方式 -->
+            <div class="other-way thirdLogin" id="j_otherWay">
+                <p>
+                                            <a class="iconfont alipay" href="https://ptlogin.qidian.com/login/alipaylogin?appid=10&areaid=1&target=iframe&ticket=1&auto=1&autotime=30&returnUrl=https%3A%2F%2Fac.qidian.com%2Flogin%2Findex%3Fsurl%3Dhttp%253A%252F%252Ft.qidian.com%252F" target="_blank">&#xe647;</a>
+                                                            <a class="iconfont weibo" href="https://ptlogin.qidian.com/login/weibologin?appid=10&areaid=1&target=iframe&ticket=1&auto=1&autotime=30&returnUrl=https%3A%2F%2Fac.qidian.com%2Flogin%2Findex%3Fsurl%3Dhttp%253A%252F%252Ft.qidian.com%252F" target="_blank">&#xe645;</a>
+                                                            <a class="iconfont baidu" href="https://ptlogin.qidian.com/login/baidulogin?appid=10&areaid=1&target=iframe&ticket=1&auto=1&autotime=30&returnUrl=https%3A%2F%2Fac.qidian.com%2Flogin%2Findex%3Fsurl%3Dhttp%253A%252F%252Ft.qidian.com%252F" target="_blank">&#xe649;</a>
+                                                        </p>
+            </div>
+            <!-- end 其他登录方式 -->
+
+            <!-- start 其他登录按钮 -->
+            <div class="other-login">
+                                <!--<a href="javascript:" id="j_scanLoginBtn" class="stat" data-stat="qd_L06|扫码登录|2">扫码登录</a>-->
+                <em>|</em>
+                                                <!--<a href="javascript:" id="j_moreLogin">更多登录方式</a>-->
+                            </div>
+            <!-- end 其他登录按钮 -->
+        </div>
+        <!-- end 登录 -->
+
+        <!-- start QQ登录 -->
+                <div class="login-box qq-login hidden">
+            <div id="div_qqlogin" style="height:351px;">
+            </div>
+        </div>
+                <!-- end QQ登录 -->
+
+        <!-- start 微信登录 -->
+                <div class="login-box wechat-login hidden">
+            <div id="div_weixinlogin" style="height:360px;">
+            </div>
+        </div>
+                <!-- end 微信登录 -->
+    </div>
+    <!-- end 登录切换容器 -->
+
+</div>
+<!-- end 登录区 -->
+
+<script src="https://sta.book.qq.com/c/=/qd/js/jquery-1.9.1.min.js,/qd/js/lulu/Checkbox.js,/js/login_v1.js"></script>
+<script>
+    $(function () {
+        LoginV1.init({"appId":"10","areaId":"1","format":"json","method":"","autoTime":30,"autoShow":1,"target":"iframe","autoLoginFlag":"1","returnUrl":"https:\/\/ac.qidian.com\/login\/index?surl=http%3A%2F%2Ft.qidian.com%2F","loginfrom":"","tab":"qidian","ticket":1,"popup":0,"domain":"passport.qidian.com","baseUrl":"https:\/\/ptlogin.qidian.com","qqBaseUrl":"https:\/\/login.book.qq.com","qqDomain":".qq.com","cssPath":"https:\/\/sta.book.qq.com","isQidian":true,"style":0});
+    });
+</script>            
+        </div>
+        <!-- end 登录区块 -->
+    </div>
+    <!-- end 整体居中 -->
+
+<#include "/footer.html"/>
+</div>
+<script src="https://qidian.gtimg.com/lbf/2.0.0/qidian/report.js"></script>
+<script src="https://sta.book.qq.com/js/stat.js"></script>
+<script>
+    $(function () {
+        Stat.init();
+    });
+</script></body>
+</html>

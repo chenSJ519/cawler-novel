@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="src/Q.js"></script>
+		<link href="src/main.css" rel="stylesheet" type="text/css">
+		<title>我的书架</title>
+		<link rel="stylesheet" type="text/css" href="me/style.css" />
+		<script src="/js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		$(function(){
+			$(".button").click(function(){
+				if($("#newclassid").val()!=-1)
+				{
+					move();
+				}else{
+					deleteBooks();
+				}
+			});
+		});
+			function deleteBook(id)
+			{
+//				if(confirm('确实要将本书移出书架么？'));
+				$.ajax({
+					type:"post",
+					url:"/deletebook",
+					data:{id:id},
+					async:false,
+					success:function(data)
+					{
+						if(data=="success")
+						{
+							location.reload();
+						}else{
+							alert("移除失败");
+						}
+					},
+					error:function(data)
+					{
+						alert("服务器内部错误");
+					}
+				});
+				
+			}
+			function deleteBooks()
+			{
+				var ids=new Array();
+				var count=0;
+					$(".check").each(function(index){
+						if($(this).prop("checked"))
+						{
+							ids[count]=$(this).val();
+							count++;
+						}
+						
+					});
+				if(ids.length==0)
+				{
+					alert("请选择要移除的书");
+					return;
+					
+				}
+				if(confirm('确实要将这些本书移出书架么？'))
+				{
+					
+				var dataUrl="";
+					$.each(ids, function(index,item) {
+						if(index!=ids.length-1)
+						dataUrl+=item+",";
+						else
+						dataUrl+=item;
+					});
+					
+					$.ajax({
+						type:"post",
+						url:"/deletebook",
+						data:{id:dataUrl},
+						async:false,
+						success:function(data)
+						{
+							if(data=="success")
+							{
+								location.reload();
+							}else{
+								alert("移除失败");
+							}
+						},
+						error:function(data)
+						{
+							alert("服务器内部错误");
+						}
+					});
+				}
+				
+			}
+			function move()
+			{
+				var ids=new Array();
+				var count=0;
+					$(".check").each(function(index){
+						if($(this).prop("checked"))
+						{
+							ids[count]=$(this).val();
+							count++;
+						}
+						
+					});
+				if(ids.length==0)
+				{
+					alert("请选择要移动的书");
+					return;
+					
+				}
+				if(confirm('确实要将选中书目移出书架么？'))
+				{
+					
+				
+					var dataUrl="";
+					$.each(ids, function(index,item) {
+						if(index!=ids.length-1)
+						dataUrl+=item+",";
+						else
+						dataUrl+=item;
+					});
+					var des=$("#newclassid").val();
+//					dataUrl="des="+des;
+						
+						$.ajax({
+						type:"post",
+						url:"/movebook",
+						data:{ids:dataUrl,des:des},
+						async:false,
+						success:function(data)
+						{
+							if(data=="success")
+							{
+								location.reload();
+							}else{
+								alert("移动失败");
+							}
+						},
+						error:function(data)
+						{
+							alert("服务器内部错误");
+						}
+					});
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<#include "/header.html"/>
+			<div class="main">
+
+			<!--<div id="left">-->
+
+				<!--<div class="block">-->
+					<!--<div class="blocktitle">用户设置</div>-->
+					<!--<div class="blockcontent">-->
+						<!--<ul class="ulnav">-->
+							<!--<li>-->
+								<!--<a href="/me">用户资料</a>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<a href="#">修改资料</a>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<a href="#">联系信息</a>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<a href="#">设置头像</a>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<a href="#">修改密码</a>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<a href="/logout">退出登录</a>-->
+							<!--</li>-->
+						<!--</ul>-->
+					<!--</div>-->
+				<!--</div>-->
+
+				<!--<div class="block">-->
+					<!--<div class="blocktitle">短消息</div>-->
+					<!--<div class="blockcontent">-->
+						<!--<ul class="ulnav">-->
+							<!--<li>-->
+								<!--<a href="#">收件箱</a>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<a href="#">发件箱</a>-->
+							<!--</li>-->
+
+							<!--<li>-->
+								<!--<a href="#">写给管理员</a>-->
+							<!--</li>-->
+						<!--</ul>-->
+					<!--</div>-->
+				<!--</div>-->
+
+				<!--<div class="block">-->
+					<!--<div class="blocktitle">工具箱</div>-->
+					<!--<div class="blockcontent">-->
+						<!--<ul class="ulnav">-->
+
+							<!--<li>-->
+								<!--<a href="#">我的书架</a>-->
+							<!--</li>-->
+
+							<!--<li>-->
+								<!--<a href="#">申请作者</a>-->
+							<!--</li>-->
+
+							<!--<li>-->
+								<!--<a href="#">在线充值</a>-->
+							<!--</li>-->
+							<!--<li>-->
+								<!--<a href="#">充值记录</a>-->
+							<!--</li>-->
+
+							<!--<li>-->
+								<!--<a href="#">打赏记录</a>-->
+							<!--</li>-->
+
+							<!--<li>-->
+								<!--<a href="#">消费记录</a>-->
+							<!--</li>-->
+
+						<!--</ul>-->
+					<!--</div>-->
+				<!--</div>-->
+
+			<!--</div>-->
+			<!--<div id="centerm">-->
+				<div id="content">
+					<script language="javascript">
+//						function check_confirm() {
+//							var checkform = document.getElementById('checkform');
+//							var checknum = 0;
+//							for(var i = 0; i < checkform.elements.length; i++) {
+//								if(checkform.elements[i].name == 'checkid[]' && checkform.elements[i].checked == true) checknum++;
+//							}
+//							if(checknum == 0) {
+//								alert('请先选择要操作的书目！');
+//								return false;
+//							}
+//							var newclassid = document.getElementById('newclassid');
+//							if(newclassid.value == -1) {
+//								if(confirm('确实要将选中书目移出书架么？')) return true;
+//								else return false;
+//							} else {
+//								return true;
+//							}
+//						}
+					</script>
+					<form action="" method="post" name="checkform" id="checkform" onsubmit="return check_confirm();">
+						<!--<div class="gridtop">
+您的书架可收藏 20 本，已收藏 1 本，本组有 1 本。
+
+&nbsp;&nbsp;&nbsp;&nbsp;选择分组
+  <select name="classlist" onchange="javascript:document.location='bookcase.php?classid='+this.value;">
+    <option value="0">默认书架</option>
+	
+    <option value="1" selected="selected">第1组书架</option>
+	
+    <option value="2">第2组书架</option>
+	
+    <option value="3">第3组书架</option>
+	
+    <option value="4">第4组书架</option>
+	
+    <option value="5">第5组书架</option>
+	
+  </select>
+
+  </div>-->
+						<table class="grid" width="100%" align="center">
+							<caption class="gridtop">
+								您的书架可收藏 20 本，已收藏 1 本，本组有 1 本。 &nbsp;&nbsp;&nbsp;&nbsp;选择分组
+								<select name="classlist" onchange="javascript:document.location='bookcase?bookCaseNum='+this.value;">
+									<option value="0">书架</option>
+									<option value="0">默认书架</option>
+
+									<option value="1" >第1组书架</option>
+
+									<option value="2">第2组书架</option>
+
+									<option value="3">第3组书架</option>
+
+									<option value="4">第4组书架</option>
+
+									<option value="5">第5组书架</option>
+
+								</select>
+
+							</caption>
+							<tbody>
+								<tr align="center">
+									<th width="5%"><input type="checkbox" id="checkall" name="checkall" value="checkall" onclick="javascript: for (var i=0;i<this.form.elements.length;i++){ if (this.form.elements[i].name != 'checkkall') this.form.elements[i].checked = this.form.checkall.checked; }"></th>
+									<th width="21%">小说名称</th>
+									<th width="30%">最新章节</th>
+									<th width="30%">书签</th>
+									<th width="7%">更新</th>
+									<th width="7%">操作</th>
+								</tr>
+
+								
+									<#list userArticlePks as userArticlePk>
+										<tr>
+									<td align="center">
+										<input class="check" type="checkbox" id="checkid[]" name="checkid[]" value="${userArticlePk.article.id}"> </td>
+									<td>
+										<a href="/mulu?id=${userArticlePk.article.id}" target="_blank">${userArticlePk.article.name}</a>
+									</td>
+									<td>
+
+										<a href="/read?id=${userArticlePk.article.lastChapter.id}" target="_blank">${userArticlePk.article.name}•${userArticlePk.article.lastChapter.chapterName}</a>
+
+									</td>
+									<td>
+										<#if userArticlePk.labelName??>
+										<a href="/read?id=<#if userArticlePk.bookLabel??>${userArticlePk.bookLabel}</#if>" target="_blank">${userArticlePk.labelName}</a>
+										</#if>
+									</td>
+									<td align="center">${userArticlePk.article.lastUpdate?string("MM-dd")}
+									</td>
+									<td align="center">
+										<a href="javascript:" onclick="deleteBook(${userArticlePk.article.id})">移除</a>
+									</td>
+								</tr>
+										
+									</#list>
+								
+								<tr>
+									<td colspan="6" align="center" class="foot">选中项目
+										<select name="newclassid" id="newclassid">
+											<option value="-1" selected="selected">移出书架</option>
+											<option value="0">移到默认书架</option>
+
+											<option value="1">移到第1组书架</option>
+
+											<option value="2">移到第2组书架</option>
+
+											<option value="3">移到第3组书架</option>
+
+											<option value="4">移到第4组书架</option>
+
+											<option value="5">移到第5组书架</option>
+
+										</select> <input name="btnsubmit" type="button" value=" 确认 " class="button"><input name="clsssid" type="hidden" value="1"></td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+
+				</div>
+			<!--</div>-->
+		</div>
+	</body>
+<#include "/footer.html"/>
+</html>

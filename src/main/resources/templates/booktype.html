@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>分类</title>
+		<script type="text/javascript" src="src/Q.js"></script>
+		<link href="src/main.css" rel="stylesheet" type="text/css">
+		<!--身体-->
+
+		<!-- end 通用头逻辑 -->
+
+		<link rel="stylesheet" data-ignore="true" href="./type/Button.0.46.css">
+
+		<link charset="utf-8" rel="stylesheet" href="./type/Autocomplete.css">
+		<link charset="utf-8" rel="stylesheet" href="./type/Dropdown.css">
+		<link charset="utf-8" rel="stylesheet" href="./type/Popup.css">
+		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="type/booktype.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+
+		</script>
+	</head>
+
+	<body>
+		<#include "/header.html"/>
+		<div class="all-pro-wrap box-center cf">
+			<!-- start 侧边栏筛选条件 -->
+			<!--完本、全本、免费频道左边菜单栏-->
+			<div class="range-sidebar fl" data-l1="4">
+				<!-- start 选择站点 -->
+				<div class="site" data-l2="1">
+					<a class="act" href="javascript:">男生</a>
+					<a href="http://all.qdmm.com/Default.aspx" target="_blank" data-eid="qd_B15">女生</a>
+				</div>
+				<!-- end 选择站点 -->
+				<!-- start 已选-->
+				<div class="selected" data-l2="2">
+
+					<p><span>已选</span>
+
+						<a class="all" href="javascript:" type="all">全部</a>
+
+					</p>
+				</div>
+				<!-- end 已选-->
+				<!-- start 条件筛选列表 -->
+				<div class="select-list">
+					<!-- start 作品分类 -->
+					<div class="work-filter type-filter" data-l2="3">
+
+						<h3>分类</h3>
+						<!-- 第一行一级分类 cite和i是嵌套的小三角-->
+						<ul class="row-1" type="category">
+							
+							<li id="all" data-id="-1" class="">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B17">全部</a>
+							</li>
+							<#list typeList as type>
+								<li data-id="${type.id}" id="xh" class="">
+									<a href="javascript:" onclick="getType(this)" data-eid="qd_B18">${type.typeName}<cite><i></i></cite></a>
+								</li>
+							</#list>
+							
+						</ul>
+						<!-- 点击后展示对应的子分类 默认隐藏 目前是为了展示选中一级分类时的状态 -->
+						<!-- 跳转回显页面时，先隐藏所有的sub-type，然后重新显示对应行的子分类 -->
+
+					</div>
+					<!-- end 作品分类 -->
+					<!-- start 作品状态 -->
+
+					<div class="work-filter action-filter" data-l2="4">
+
+						<h3>状态</h3>
+						<ul type="action">
+							<li data-id="-1" class="">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B31">全部</a>
+							</li>
+							<li data-id="0">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B32">连载</a>
+							</li>
+							<li data-id="1">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B33">完本</a>
+							</li>
+						</ul>
+					</div>
+
+					<!-- end 作品状态 -->
+					<!-- start 作品属性 -->
+
+					<div class="work-filter vip-filter" data-l2="5">
+
+						<h3>属性</h3>
+						<ul type="vip">
+							<li data-id="-1" class="">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B34">全部</a>
+							</li>
+							<li data-id="0">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B35">免费</a>
+							</li>
+							<li data-id="1" -1="">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B36">VIP</a>
+							</li>
+						</ul>
+					</div>
+
+					<!-- end 作品属性 -->
+					<!-- start 作品字数 -->
+					<div class="work-filter" data-l2="6">
+
+						<h3>字数</h3>
+						<ul type="size">
+							<li data-id="-1" class="">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B37">全部</a>
+							</li>
+							<li data-id="1">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B38">30万字以下</a>
+							</li>
+							<li data-id="2">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B39">30-50万字</a>
+							</li>
+							<li data-id="3">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B40">50-100万字</a>
+							</li>
+							<li data-id="4">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B41">100-200万字</a>
+							</li>
+							<li data-id="5">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B42">200万字以上</a>
+							</li>
+						</ul>
+					</div>
+
+					<!-- start 更新时间-->
+					<div class="work-filter" data-l2="9">
+
+						<h3>更新时间</h3>
+						<ul type="update">
+							<li data-id="-1" class="">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B71">全部</a>
+							</li>
+							<li data-id="1">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B72">三日内</a>
+							</li>
+							<li data-id="2">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B73">七日内</a>
+							</li>
+							<li data-id="3">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B74">半月内</a>
+							</li>
+							<li data-id="4">
+								<a href="javascript:" onclick="getType(this)" data-eid="qd_B75">一月内</a>
+							</li>
+						</ul>
+					</div>
+					<!-- end 更新时间 -->
+					<!-- start 作品标签 -->
+					<div class="work-filter tag" data-l2="8">
+						<h3>标签</h3>
+
+						<ul type="tag">
+
+							<li data-id="1" class="">
+								<a href="javascript:" onclick="getType(this)">全部</a>
+							</li>
+
+							<li data-id="2" data-tid="豪门">
+								<a href="javascript:" onclick="getType(this)">豪门</a>
+							</li>
+
+							<li data-id="3" data-tid="孤儿">
+								<a href="javascript:" onclick="getType(this)">孤儿</a>
+							</li>
+
+							<li data-id="4" data-tid="盗贼">
+								<a href="javascript:" onclick="getType(this)">盗贼</a>
+							</li>
+
+							<li data-id="5" data-tid="特工">
+								<a href="javascript:" onclick="getType(this)">特工</a>
+							</li>
+
+							<li data-id="6" data-tid="黑客">
+								<a href="javascript:" onclick="getType(this)">黑客</a>
+							</li>
+
+							<li data-id="7" data-tid="明星">
+								<a href="javascript:" onclick="getType(this)">明星</a>
+							</li>
+
+							<li data-id="8" data-tid="特种兵">
+								<a href="javascript:" onclick="getType(this)">特种兵</a>
+							</li>
+
+							<li data-id="9" data-tid="杀手">
+								<a href="javascript:" onclick="getType(this)">杀手</a>
+							</li>
+
+							<li data-id="10" data-tid="老师">
+								<a href="javascript:" onclick="getType(this)">老师</a>
+							</li>
+
+							<li data-id="11" data-tid="学生">
+								<a href="javascript:" onclick="getType(this)">学生</a>
+							</li>
+
+						
+
+						</ul>
+					</div>
+					<!-- end 作品标签 -->
+				</div>
+				<!-- end 条件筛选列表 -->
+			</div>
+			<!-- end 侧边栏筛选条件 -->
+			<!-- start 全部作品内容区 -->
+			<div class="main-content-wrap fl" data-l1="5">
+				<!-- start 操作栏 -->
+				<!--全部作品页、完本作品页、免费作品页列表上方操作栏 start-->
+
+				<div class="tool-bar cf">
+					<div class="view-mode" id="view-mode">
+						<a id="img-text" class="iconfont act" href="javascript:" data-eid="qd_B54"></a><em>|</em>
+						<a id="only-text" class="iconfont  " href="javascript:" data-eid="qd_B55"></a>
+					</div>
+					<div class="select-wrap">
+
+						<a data-id="-1" class="" href="javascript:" onclick="getType2(this)" data-eid="qd_B62">人气排序<cite class="iconfont"></cite></a>
+						<a data-id="1" class="" href="javascript:" onclick="getType2(this)" data-eid="qd_B49">更新时间</a>
+						<a data-id="2" class="" href="javascript:" onclick="getType2(this)" data-eid="qd_B80">总收藏</a>
+						<a data-id="3" class="" href="javascript:" onclick="getType2(this)" data-eid="qd_B52">总字数</a>
+						<a data-id="4" class="" href="javascript:" onclick="getType2(this)" data-eid="qd_B52">总点击</a>
+						<a data-id="5" class="" href="javascript:" onclick="getType2(this)" data-eid="qd_B52">总推荐</a>
+
+					</div>
+				</div>
+				<!--全部作品页、完本作品页、免费作品页列表上方操作栏 end-->
+				<!-- end 操作栏 -->
+				<!-- start 全部作品列表 -->
+				<!-- start 暂无数据 -->
+
+				<div class="all-book-list">
+
+					<div class="book-img-text">
+						<ul class="all-img-list cf">
+							<#list articlePage.content as article>
+								<li data-rid="${article_index+1}">
+									<div class="book-img-box">
+										<a href="/bookinfo?id=${article.id}" data-bid="3513193" data-eid="qd_B57" target="_blank"><img src="/bookimage/${article.id}.jpg"></a>
+									</div>
+									<div class="book-mid-info">
+										<h4><a href="/bookinfo?id=${article.id}" target="_blank" data-eid="qd_B58" data-bid="3513193">${article.name}</a></h4>
+										<p class="author">
+											<img src="//qidian.gtimg.com/qd/images/ico/user.0.1.png">
+											<a class="name" href="http://me.qidian.com/authorIndex.aspx?id=4362096" data-eid="qd_B59" target="_blank">${article.author}</a><em>|</em>
+											<a href="//xuanhuan.qidian.com" target="_blank" data-eid="qd_B60">${article.type.typeName}</a><i>·</i>
+											<a class="go-sub-type" data-typeid="21" data-subtypeid="73" href="javascript:" data-eid="qd_B61">异世大陆</a><em>|</em><span><#if article.state==0>连载中<#else>已完结</#if></span>
+										</p>
+										<p class="intro">
+											${article.intro}
+											<#--${article.intro?substring(0,47)}-->
+										</p>
+										<p class="update"><span>${article.size}字</span>
+											<i>·</i>
+											<#if orderId==1>
+												<b class="red">${article.lastUpdate?string("MM-dd HH:mm")}更新</b>
+												<#elseif orderId==2>
+													<b class="red">${article.collect}总收藏</b>
+													<#elseif orderId==3>
+														<#elseif orderId==4>
+															<b class="red">${article.allVisit}总点击</b>
+															<#elseif orderId==5>
+																<b class="red">${article.allVote}总推荐</b>
+											</#if>
+
+
+										</p>
+									</div>
+								</li>
+							</#list>
+
+
+						</ul>
+						<!-- 此处数据一共是10行，总共20本书-->
+					</div>
+
+					<!-- end 图文模式 -->
+					<!-- start 文字表格模式 预先隐藏，切换时显示，隐藏图文模式 -->
+
+					<!-- end 文字表格模式 -->
+				</div>
+				<!-- start 分页 -->
+<#include "/pager.html"/>				<!-- end 分页 -->
+
+				<!-- end 全部作品列表 -->
+
+			</div>
+			<!-- end 全部作品内容区 -->
+		</div>
+	</body>
+<#include "/footer.html"/>
+</html>

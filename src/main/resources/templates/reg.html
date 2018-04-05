@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+	<head>
+		<meta name="Generator" content="ZhangJi" />
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<script type="text/javascript" src="src/Q.js"></script>
+		<link href="src/main.css" rel="stylesheet" type="text/css">
+		<title>会员注册</title>
+		<link href="css/regstyle.css" rel="stylesheet" type="text/css">
+		<link href="css/valid.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="src/pop.css"/>
+
+
+		<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript" src="js/Validform_v5.3.2_min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#imgcode").blur(function(){
+					$('#check_code').attr('src','/validImage.jpg?date='+Date());
+				});
+			});
+		</script>
+
+	</head>
+
+	<body style="background:#fff;">
+<#include "/header.html"/>
+		<div class="hearder" style="padding:10px 0">
+			<div class="warp">
+				<a href="#"><img src=""></a>
+			</div>
+		</div>
+
+		<div class="warp regCont" style="margin-top:-60px;margin-bottom: 100px;">
+			<div class="tittle">
+				<h1>注册您的帐户</h1>
+				<p>已有账户，
+					<a href="/login">马上登陆</a>
+				</p>
+			</div>
+			<div style="padding:20px 20px 40px;">
+				<form method="post" action="/reg.do" class="" id="register">
+					<div class="valGroup">
+						<div class="valGroup-item-1 inline-block"><span>*</span> 用户名：</div>
+						<div class="valGroup-item-2 formControls inline-block">
+							<input type="text" class="input-text-1" datatype="*" ajaxurl="/enableName" nullmsg="请输入用户名" name="name" id="username" placeholder="3~12个字符，只接受字母和数字">
+						</div>
+						<div class="inline-block"></div>
+					</div>
+					<div class="valGroup">
+						<div class="valGroup-item-1 inline-block"><span>*</span> 密码：</div>
+						<div class="valGroup-item-2 formControls inline-block">
+							<input type="password" class="input-text-1" name="password" id="password" datatype="*6-15" errormsg="密码范围在6~15位之间！" placeholder="可由6-18位英文、数字及标点组成">
+						</div>
+						<div class="inline-block"></div>
+					</div>
+					<div class="valGroup">
+						<div class="valGroup-item-1 inline-block">确认密码：</div>
+						<div class="valGroup-item-2 formControls inline-block">
+							<input type="password" class="input-text-1" value="" name="password2" datatype="*" recheck="password" errormsg="您两次输入的账号密码不一致！" />
+						</div>
+						<div class="inline-block"></div>
+					</div>
+
+					<div class="valGroup">
+						<div class="valGroup-item-1 inline-block">email：</div>
+						<div class="valGroup-item-2 formControls inline-block">
+							<input type="tel" class="input-text-1" name="email"  ajaxurl="/enableEmail" datatype="e" id="qq" placeholder="请输入邮箱">
+						</div>
+						<div class="inline-block"></div>
+					</div>
+					<!--<div class="valGroup">
+						<div class="valGroup-item-1 inline-block"><span>*</span> 手机号码：</div>
+						<div class="valGroup-item-2 formControls inline-block">
+							<input type="tel" class="input-text-1" datatype="m" name="tel" id="tel" placeholder="请输入手机号码">
+						</div>
+						<div class="inline-block"></div>
+					</div>-->
+					<div class="valGroup">
+						<div class="valGroup-item-1 inline-block"><span>*</span> 图形验证码：</div>
+						<div class="valGroup-item-2 formControls inline-block" style="position: relative;">
+							<input type="text" class="input-text-1" name="validCode" datatype="*" ajaxurl="/validCode" id="imgcode" placeholder=" " style="width:200px;">
+							<div style="display:inline-block;vertical-align: middle;height:38px;">
+								<a href="#"><img id="check_code" is_send="0" width="200px" height="50px" src="/validImage.jpg" onClick="javascript:this.src='/validImage.jpg?date='+Date();"></a>
+							</div>
+							&nbsp;&nbsp;
+							<a href="javascript:$('#check_code').attr('src','/validImage.jpg?date='+Date());" style="font-size:12px;">看不清？换一张</a>
+						</div>
+						<div class="inline-block"></div>
+					</div>
+					<!--<div class="valGroup">
+						<div class="valGroup-item-1 inline-block"><span>*</span> 短信验证码：</div>
+						<div class="valGroup-item-2 formControls inline-block">
+							<input type="text" class="input-text-1" name="telcode" id="telcode" placeholder=" " style="width:200px;">
+							<div style="display:inline-block;vertical-align: middle;margin-top: -2px;height:38px;" id="gca">
+								<a class="telcode" href="#">获取短信验证码</a>
+							</div>
+						</div>
+						<div class="inline-block"></div>
+					</div>-->
+
+					<div class="valGroup">
+						<div class="valGroup-item-1 inline-block">&nbsp;</div>
+						<div class="valGroup-item-2 formControls inline-block">
+							<label class="checkbox">
+                      <input type="checkbox" name="checkAggree" id="checkAggree" checked style="border:0;position: relative; margin:0; top:2px;"> 我已阅读并同意
+                    </label>
+							<a href="javascript:void(0)" class="xieyi">《井冈中文网协议》</a>
+						</div>
+						<div class="inline-block"></div>
+					</div>
+
+					<div class="valGroup">
+						<div class="valGroup-item-1 inline-block">&nbsp;</div>
+						<div class="valGroup-item-2 inline-block">
+							<input class="valGroup-btn" type="submit" value="&nbsp;&nbsp;确定注册&nbsp;&nbsp;">
+							<a style="cursor:pointer;display:none" id="btn_sub" target="_blank" class="valGroup-btn">确定注册</a>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+
+		<script>
+			$(document).ready(function() {
+				var demo = $("#register").Validform({
+					tiptype: 2
+				});
+
+			});
+		</script>
+		
+		<!--<div class="Q_pop_box" style="position: fixed; left: 498.5px; z-index: 2147483600; overflow: hidden; opacity: 1; top: 0px;">				<div id="k2_login_pop" class="K2_POP">					<div class="title">用户登录</div>						<div class="context">							<span id="Q_login_user_error" class="war_text">您输入的用户名或邮箱不正确</span>							<form name="k2_login_pop" id="k2_login_pop_form" onsubmit="return Q.login.check(this)">								<input class="user" type="text" name="user" style="color:gray;" value="邮箱/手机/用户名">								<input class="pass" type="password" name="pass" value="">								<div id="QLoginCode"></div>								<div class="save">								<a target="_blank" href="http://passport.17k.com/forget/pass">忘记密码</a>									<label><input type="checkbox" name="isSave" class="issave" checked="">自动登录</label>								</div>								<input class="sub" type="submit" value="登录">								<a class="reg" target="_blank" href="http://passport.17k.com/register">注册</a>								<div class="oauth"> 其他登录方式：									<a href="http://passport.17k.com/sns/connect/2?nextUrl=http://www.17k.com/" onclick="window.sa &amp;&amp; sa.track('Login',{'task':'www','guid':Q.guid,'logintype':'qq'});">										<img src="http://img.17k.com/public/k/login/qq.png" alt="qq登录"></a>									<a href="http://open.wechat.17k.com/login?nextUrl=http://www.17k.com/" onclick="window.sa &amp;&amp; sa.track('Login',{'task':'www','guid':Q.guid,'logintype':'weixin'});">										<img src="http://img.17k.com/2015/Q/skin/login/weixin.png" alt="微信登录"></a>									<a href="http://passport.17k.com/sns/connect/3?nextUrl=http://www.17k.com/" onclick="window.sa &amp;&amp; sa.track('Login',{'task':'www','guid':Q.guid,'logintype':'weibo'});">										<img src="http://img.17k.com/public/k/login/sina.png" alt="微博登录"></a>									<a href="http://passport.17k.com/sns/connect/1?nextUrl=http://www.17k.com/" onclick="window.sa &amp;&amp; sa.track('Login',{'task':'www','guid':Q.guid,'logintype':'renren'});">										<img src="http://img.17k.com/public/k/login/renren.png" alt="人人登录"></a>									<a href="http://wap.passport.17k.com/sns/connect/4?nextUrl=http://www.17k.com/" style="color:red;font:14px" onclick="window.sa &amp;&amp; sa.track('Login',{'task':'www','guid':Q.guid,'logintype':'wapQQ'});">										wapQQ</a>								</div>							</form>						</div>					</div>				<div style="position: absolute; z-index: 2147483647; top: 0px; right: 0px;"><div class="close_bar"></div></div></div>-->
+<#include "/footer.html"/>
+	</body>
+
+</html>

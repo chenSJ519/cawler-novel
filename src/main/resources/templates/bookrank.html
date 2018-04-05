@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+
+		<title>排行</title>
+		<script type="text/javascript" src="src/Q.js"></script>
+		<link href="src/main.css" rel="stylesheet" type="text/css">
+
+
+
+		<!-- end 通用头逻辑 -->
+
+		<link rel="stylesheet" data-ignore="true" href="./rank/footer.0.46.css">
+
+		<link charset="utf-8" rel="stylesheet" href="./rank/Dropdown.css">
+		<link charset="utf-8" rel="stylesheet" href="./rank/Autocomplete.css">
+		<link charset="utf-8" rel="stylesheet" href="./rank/Popup.css">
+
+		<link rel="stylesheet" href="./rankBody/style.css" type="text/css" media="all">
+		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="rank/booktype.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<#include "/header.html"/>		<div class="rank-box box-center cf">
+			<!-- 设置 侧边栏高亮变量初始值 -->
+
+			<!-- start 榜单列表导航-->
+			<div class="rank-nav-list fl" data-l1="4">
+				<p class="line"></p>
+				<h4>热门作品排行</h4>
+				<ul class="list_type_detective">
+					<li class="">
+						<a  data-id="-1" class="" href="javascript:" onclick="getType2(this)"  data-eid="qd_C02">原创风云榜</a><cite></cite></li>
+					<!--<li class="">
+						<a  data-id="-1" class="" href="javascript:" onclick="getType2(this)" data-eid="qd_C03">24小时热销榜</a><cite></cite></li>
+					<li class="">
+						<a  data-id="-1" class="" href="javascript:" onclick="getType2(this)" data-eid="qd_C04">会员点击榜</a><cite></cite></li>-->
+					<li class="">
+						<a  data-id="5" class="" href="javascript:" onclick="getType2(this)" data-eid="qd_C05">推荐票榜</a><cite></cite></li>
+					<li class="">
+						<a  data-id="2" class="" href="javascript:" onclick="getType2(this)" data-eid="qd_C06">收藏榜</a><cite></cite></li>
+					<li class="">
+						<a  data-id="6" class="" href="javascript:" onclick="getType2(this)" data-eid="qd_C10">完本榜</a><cite></cite></li>
+				</ul>
+				<!--<p class="line"></p>
+				<h4>新书排行</h4>
+				<ul class="list_type_detective">
+					<li class="">
+						<a data-id="5" class="" href="javascript:" onclick="getType2(this)"  data-eid="qd_C11">签约作家新书榜</a><cite></cite></li>
+					<li class="">
+						<a data-id="5" class="" href="javascript:" onclick="getType2(this)"  data-eid="qd_C12">公众作者新书榜</a><cite></cite></li>
+					<li class="">
+						<a data-id="5" class="" href="javascript:" onclick="getType2(this)"  data-eid="qd_C13">新人签约新书榜</a><cite></cite></li>
+					<li class="">
+						<adata-id="5" class="" href="javascript:" onclick="getType2(this)"  data-eid="qd_C14">新人作者新书榜</a><cite></cite></li>
+				</ul>
+				<p class="line"></p>-->
+
+			</div>
+			<!-- end 榜单列表导航-->
+			<!-- start 榜单列表内容 -->
+			<div class="main-content-wrap fl" data-l1="5">
+				<!-- start rank 头部区域 -->
+
+				<div class="rank-header">
+					<div class="type-list">
+						<p>
+							<a data-chanid="-1" class="act" href="javascript:"onclick="getType(this)" data-eid="qd_C20">全部分类</a><em>·</em>
+							<a data-chanid="2" class="" href="javascript:" onclick="getType(this)" data-eid="qd_C21">玄幻</a><em>·</em>
+							<a data-chanid="3" class="" href="javascript:" onclick="getType(this)" data-eid="qd_C22">奇幻</a><em>·</em>
+							<a data-chanid="4" class="" href="javascript:" onclick="getType(this)" data-eid="qd_C23">武侠</a><em>·</em>
+							<a data-chanid="5" class="" href="javascript:" onclick="getType(this)" data-eid="qd_C24">仙侠</a><em>·</em>
+							<a data-chanid="6" class="" href="javascript:" onclick="getType(this)" data-eid="qd_C25">都市</a><em>·</em>
+							<a data-chanid="8" class="" href="javascript:" onclick="getType(this)" data-eid="qd_C26">职场</a><em>·</em>
+							<a data-chanid="9" class="" href="javascript:" onclick="getType(this)" data-eid="qd_C27">军事</a><em>·</em>
+							<a data-chanid="10" class="" href="javascript:" onclick="getType(this)" data-eid="qd_C28">历史</a><em>·</em>
+							<a data-chanid="11" class="" href="javascript:" onclick="getType(this)" data-eid="qd_C29">游戏</a><em>·</em>
+							<a data-chanid="12" class="" href="javascript:" onclick="getType(this)" data-eid="qd_C30">体育</a><em>·</em>
+							<a data-chanid="13" class="" href="javascript:" onclick="getType(this)" data-eid="qd_C31">科幻</a><em>·</em>
+							<a data-chanid="14" class="" href="javascript:" onclick="getType(this)" data-eid="qd_C32">灵异</a><em>·</em>
+							<a data-chanid="15" class="" href="javascript:" onclick="getType(this)" data-eid="qd_C33">二次元</a>
+						</p>
+					</div>
+				</div>
+				<!-- end rank头部区域 -->
+				<!-- start 榜单区域 -->
+		<div class="blockcontent" id="jieqi_page_contents">
+			<#list articlePage.content as article>
+				<div class="c_row cf">
+					<div class="fl" style="width:16%;">
+						<a href="/bookinfo?id=${article.id}" target="_blank"><img style="width:90%;margin:5px auto;" src="/bookimage/${article.id}.jpg" alt="${article.name}"></a>
+					</div>
+					<div class="fl" style="width:84%;overflow:hidden;">
+						<div class="c_subject">《
+							<a href="/bookinfo?id=${article.id}" target="_blank">${article.name}</a>》
+							<a href="/read?id=${article.lastChapter.id?c}" target="_blank"> ${article.lastChapter.chapterName}</a>
+						</div>
+						<div class="c_tag">
+							<span class="c_label">作者：</span><span class="c_value"><a href="http://www.aiduwenxue.com/modules/article/authorpage.php?id=157" target="_blank">${article.author}</a></span>
+							<span class="c_label">字数：</span><span class="c_value">${article.size}</span>
+							<span class="c_label">更新：</span><span class="c_value">${article.lastUpdate?string("yyyy-MM-dd")}</span>
+							<span class="c_label">状态：</span><span class="c_value"><#if article.state==0>连载<#else>完本</#if></span>
+						</div>
+						<div class="c_description">${article.intro}</div>
+					</div>
+				</div>
+			</#list>
+
+		</div>
+<!-- end 榜单区域 -->
+			<#include "/pager.html"/>
+			</div>
+		</div>
+	</body>
+<#include "/footer.html"/>
+</html>

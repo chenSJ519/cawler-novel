@@ -1,0 +1,19 @@
+.Q_POP_CLOSE{width:45px;height:45px;background:url("close.png") no-repeat center center;}
+.Q_POP{border:6px solid rgba(0, 0, 0, 0.5);background:white;min-width:300px;}.Q_POP .title{font-weight:bold;background:#EEE;font-size:14px;padding:10px;line-height:18px;border-bottom:1px solid #C9C9C9;}
+.Q_POP .close{cursor:pointer;line-height:30px;color:white;text-align:center;background:#DD4E00;margin:30px 20px;}
+.Q_pop_box .close_bar{width:30px;height:30px;line-height:30px;font-size:18px;position:absolute;top:10px;right:10px;text-align:center;color:#666;cursor:default;background:url("close.png") no-repeat center center;}.Q_pop_box .close_bar:hover{background-color:#EF5400;color:white;}
+.K2_POP{padding:6px;width:340px;background:url('bg.png');font-size:12px;color:#333;}.K2_POP img{border:0;}
+.K2_POP a{color:#333;text-decoration:none;}.K2_POP a:hover{color:#EF5400;}
+.K2_POP .gt_holder{margin-bottom:10px;}
+.K2_POP .war_text{display:none;color:#EF5400;font-size:12px;font-weight:normal;position:relative;}
+.K2_POP .title{font-weight:bold;background:#EEE;font-size:14px;padding:10px;line-height:18px;border-bottom:1px solid #C9C9C9;}
+.K2_POP .context{padding:15px 30px;background:white;}.K2_POP .context .save{clear:both;}.K2_POP .context .save a{float:right;}
+.K2_POP .context input.user,.K2_POP .context input.pass,.K2_POP .context input.code{width:275px;height:32px;padding:0;display:block;line-height:32px;margin:15px 0;text-indent:36px;color:#666;border:1px solid #C9C9C9;font-size:14px;}.K2_POP .context input.user.user,.K2_POP .context input.pass.user,.K2_POP .context input.code.user{background:url('input.png') no-repeat left top;}
+.K2_POP .context input.user.pass,.K2_POP .context input.pass.pass,.K2_POP .context input.code.pass{background:url('input.png') no-repeat left bottom;}
+.K2_POP .context input.user.code,.K2_POP .context input.pass.code,.K2_POP .context input.code.code{width:100px;vertical-align:bottom;float:left;margin-top:0;background:url('input.png') no-repeat left center;}
+.K2_POP .context .Q_code_span{position:relative;float:left;}
+.K2_POP .context img.imgcode{border:1px solid #C9C9C9;margin-left:10px;*margin_left:0;vertical-align:middle;}
+.K2_POP .context input.issave{vertical-align:middle;}
+.K2_POP .context input.sub{width:280px;height:32px;background:#EF5400;color:white;border:0;margin:15px 0;font-size:14px;font-weight:bold;cursor:pointer;}.K2_POP .context input.sub:hover{background:#D04900;}
+.K2_POP .context a.reg{font-size:14px;display:block;line-height:32px;text-align:center;background:#ECECEC;}.K2_POP .context a.reg:hover{background:#E3E3E3;}
+.K2_POP .context .oauth{padding:20px 0;}.K2_POP .context .oauth img{vertical-align:middle;display:inline !important;}

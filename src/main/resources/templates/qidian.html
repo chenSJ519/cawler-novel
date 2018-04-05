@@ -1,0 +1,70 @@
+		<div id="pin-nav" class="pin-nav-wrap need-search" data-l1="40">
+			<div class="box-center cf">
+				<div class="nav-list site-nav fl">
+					<ul>
+						
+						<li>
+							<a href="/booktype?category=2&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1" target="" data-eid="qd_A47">玄幻</a>
+						</li>
+						<li>
+							<a href="/booktype?category=3&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1" target="" data-eid="qd_A48">都市</a>
+						</li>
+						<li>
+							<a href="/booktype?category=1&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1" target="" data-eid="qd_A49">仙侠</a>
+						</li>
+						<li>
+							<a href="/booktype?category=14&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1" target="" data-eid="qd_A50">科幻</a>
+						</li>
+						<li>
+							<a href="/booktype?category=12&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1" target="" data-eid="qd_A56">游戏</a>
+						</li>
+						<li>
+							<a href="/booktype?category=4&action=-1&vip=-1&size=-1&update=-1&tag=1&page=1&orderId=-1" target="" data-eid="qd_A52">历史</a>
+						</li>
+						<li>
+							<a href="/bookrank" target="_blank" data-eid="qd_A53">排行</a>
+						</li>
+						<li>
+							<a href="/booktype" target="_blank" data-eid="qd_A53">更多</a>
+						</li>
+					</ul>
+				</div>
+				<div class="nav-list min-user fr">
+					<ul>
+						<li id="min-search">
+							<form id="formUrl" action="/booksearch" method="get" target="_blank">
+								<label id="pin-search" for="topSearchSubmit" data-eid="qd_A62"><em class="layui-icon">&#xe612;</em>
+                        </label>
+								<input id="pin-input" class="pin-input hide" type="text" name="keyWord" placeholder="">
+								<input class="submit-input" type="submit" id="topSearchSubmit" data-eid="qd_A62">
+							</form>
+						</li>
+						<li class="line"></li>
+						<!-- 未登录 -->
+						<li class="sign-out">
+							<#if userInfo??><a id="pin-login" href="javascript:" data-eid="qd_A64">${userInfo.name}</a><a class="reg" href="/logout" target="_blank">注销</a><#else><a id="pin-login" target="_blank" href="/login" data-eid="qd_A64">登录</a>
+							<a class="reg" href="/reg" target="_blank">注册</a>
+							</#if>
+							
+						</li>
+						<!-- 登录后 -->
+						<li class="sign-in hidden">
+							<a href="//me.qidian.com/Index.aspx" target="_blank" data-eid="qd_A65"><i id="nav-user-name"></i><span></span></a>
+							<div class="dropdown">
+								<a href="//me.qidian.com/msg/lists.aspx?page=1" target="_blank" data-eid="qd_A66">消息(<i id="top-msg">0</i>)</a>
+								<a href="//me.qidian.com/account/charge.aspx" target="_blank" data-eid="qd_A67">充值</a>
+								<a href="//me.qidian.com/Index.aspx" target="_blank" data-eid="qd_A68">个人中心</a>
+								<a href="//www.qidian.com/help/kf" target="_blank" data-eid="qd_A69">客服中心</a>
+								<a id="exit" href="javascript:" data-eid="qd_A70">退出</a>
+							</div>
+						</li>
+						<li class="line"></li>
+						<li class="book-shelf" id="top-book-shelf">
+							<a href="/bookcase" target="_blank" data-eid="qd_A63"><em class="layui-icon">&#xe626;</em><i>我的书架
+                    </i></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+

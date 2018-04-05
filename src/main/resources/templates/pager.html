@@ -1,0 +1,75 @@
+<div class="page-box cf">
+	<div class="pagination fr" data-eid="qd_C44" id="page-container" data-pagemax="26910" data-page="1">
+		<div class="lbf-pagination">
+			<ul class="lbf-pagination-item-list">
+				<li class="lbf-pagination-item">
+					<a href="javascript:;" class="lbf-pagination-prev lbf-pagination-disabled">&lt;</a>
+				</li>
+				<#if ((articlePage.number+1)-2<3)>
+				<#list 1..articlePage.totalPages as i>
+					<#if ((articlePage.number+1)==i)>
+						<li class="lbf-pagination-item">
+							<a data-page="${i}" href="javascript:;" onclick="turnOverPage(this)" class="lbf-pagination-page  lbf-pagination-current">${i}</a>
+						</li>
+						<#else>
+							<li class="lbf-pagination-item">
+								<a data-page="${i}" href="javascript:;" onclick="turnOverPage(this)" class="lbf-pagination-page  ">${i}</a>
+							</li>
+					</#if>
+
+				</#list>
+				<!--<li class="lbf-pagination-item"><span class="lbf-pagination-ellipsis"></span></li>-->
+				<!--<li class="lbf-pagination-item">
+                    <a data-page="${articlePage.totalPages}" href="javascript:;" onclick="turnOverPage(this)" class="lbf-pagination-page  ">${articlePage.totalPages}</a>
+                </li>-->
+				<#elseif ((articlePage.totalPages-(articlePage.number+1))<4)>
+				<!--第二判断 -->
+				<li class="lbf-pagination-item">
+					<a data-page="1" href="javascript:;" onclick="turnOverPage(this)" class="lbf-pagination-page  ">1</a>
+				</li>
+				<li class="lbf-pagination-item"><span class="lbf-pagination-ellipsis">...</span></li>
+				<#list articlePage.totalPages-2..articlePage.totalPages as i>
+
+					<#if (articlePage.number+1)==i>
+						<li class="lbf-pagination-item">
+							<a data-page="${i}" href="javascript:;" onclick="turnOverPage(this)" class="lbf-pagination-page  lbf-pagination-current">${i}</a>
+						</li>
+						<#else>
+							<li class="lbf-pagination-item">
+								<a data-page="${i}" href="javascript:;" onclick="turnOverPage(this)" class="lbf-pagination-page  ">${i}</a>
+							</li>
+					</#if>
+
+				</#list>
+				<#else>
+					<!--第三判断-->
+					<li class="lbf-pagination-item">
+						<a data-page="1" href="javascript:;" onclick="turnOverPage(this)" class="lbf-pagination-page  ">1</a>
+					</li>
+					<li class="lbf-pagination-item"><span class="lbf-pagination-ellipsis">...</span></li>
+					<#list ((articlePage.number+1)-2)..((articlePage.number+1)+2) as i>
+						<#if (articlePage.number+1)==i>
+							<li class="lbf-pagination-item">
+								<a data-page="${i}" href="javascript:;" onclick="turnOverPage(this)" class="lbf-pagination-page  lbf-pagination-current">${i}</a>
+							</li>
+							<#else>
+								<li class="lbf-pagination-item">
+									<a data-page="${i}" href="javascript:;" onclick="turnOverPage(this)" class="lbf-pagination-page  ">${i}</a>
+								</li>
+						</#if>
+
+					</#list>
+					<li class="lbf-pagination-item"><span class="lbf-pagination-ellipsis">...</span></li>
+					<li class="lbf-pagination-item">
+						<a data-page="${articlePage.totalPages}" href="javascript:;" onclick="turnOverPage(this)" class="lbf-pagination-page  ">${articlePage.totalPages}</a>
+					</li>
+					</#if>
+
+
+			</ul>
+			<div class="lbf-pagination-jump"><input type="text" class="lbf-pagination-input" value="${articlePage.number+1}">
+				<a href="javascript:;" onclick="goPage()" class="lbf-pagination-go">GO</a>
+			</div>
+		</div>
+	</div>
+</div>
